@@ -1,7 +1,7 @@
 /*
   Test Power
 
-  Test progam for power setting and stauts LEDs.
+  Test progam for power settings and status LEDs.
 */
 
 #include <Wire.h>

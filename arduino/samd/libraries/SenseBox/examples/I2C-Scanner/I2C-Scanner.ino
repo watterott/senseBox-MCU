@@ -23,8 +23,7 @@ void setup()
 
 void loop()
 {
-  byte error, address;
-  int devices;
+  byte devices, address;
 
   Serial.println("Scanning...");
 
@@ -32,27 +31,18 @@ void loop()
   for(address = 1; address < 127; address++ )
   {
     Wire.beginTransmission(address);
-    error = Wire.endTransmission();
+    byte error = Wire.endTransmission();
  
     if(error == 0)
     {
       devices++;
-      Serial.print("Device found at address 0x");
-      if(address < 16)
-      {
-        Serial.print("0");
-      }
-      Serial.print(address,HEX);
-      Serial.println(" !");
+      Serial.print("Device found at 0x");
+      Serial.println(address, HEX);
     }
     else if(error == 4)
     {
-      Serial.print("Unknow error at address 0x");
-      if(address < 16)
-      {
-        Serial.print("0");
-      }
-      Serial.println(address,HEX);
+      Serial.print("Unknow error at 0x");
+      Serial.println(address, HEX);
     }    
   }
 
