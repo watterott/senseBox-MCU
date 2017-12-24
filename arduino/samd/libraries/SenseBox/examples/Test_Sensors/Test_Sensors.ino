@@ -18,7 +18,7 @@ void setup()
   // init serial library
   Serial.begin(9600);
   while(!Serial); // wait for serial monitor
-  Serial.println("Test I2C Sensors");
+  Serial.println("Test Sensors");
 
   // power on I2C ports
   senseBoxIO.PowerI2C(true);
@@ -46,7 +46,7 @@ void check_sensor(byte address)
   switch(address)
   {
     case 0x29:  //TSL45315
-      Serial.println("TSL45315\n");
+      Serial.println("--- TSL45315");
       tsl.begin();
       l = tsl.readLux();
       Serial.print("Lux ");
@@ -55,7 +55,7 @@ void check_sensor(byte address)
 
     case 0x38:  //VEML6070
     //case 0x39:
-      Serial.println("VEML6070 (0x38+0x39)\n");
+      Serial.println("--- VEML6070 (0x38+0x39)");
       Wire.beginTransmission(address);
       Wire.write((0x1<<2) | 0x02); //Integration Time 1
       Wire.endTransmission();
@@ -74,7 +74,7 @@ void check_sensor(byte address)
     case 0x41:
     case 0x42:
     case 0x43:
-      Serial.println("HDC100X\n");
+      Serial.println("--- HDC100X");
       hdc.begin(address);
       t = hdc.readTemperature();
       h = hdc.readHumidity();
@@ -90,7 +90,7 @@ void check_sensor(byte address)
     case 0x77:
       if(bmp280.begin(address) != 0)
       {
-        Serial.println("BMP280\n");
+        Serial.println("--- BMP280");
         delay(100);
         t = bmp280.readTemperature();
         p = bmp280.readPressure();
@@ -98,7 +98,7 @@ void check_sensor(byte address)
       }
       else if(bme280.begin(address) != 0)
       {
-        Serial.println("BME280\n");
+        Serial.println("--- BME280");
         delay(100);
         t = bme280.readTemperature();
         p = bme280.readPressure();
@@ -107,7 +107,7 @@ void check_sensor(byte address)
       }
       else if(bme680.begin(address) != 0)
       {
-        Serial.println("BME680\n");
+        Serial.println("--- BME680");
         delay(100);
         bme680.performReading();
         t = bme680.temperature;
@@ -126,23 +126,23 @@ void check_sensor(byte address)
         u = Wire.read();
              if(u == 0x58) //BMP280
         {
-          Serial.println("BMP280\n");
+          Serial.println("--- BMP280");
         }
         else if(u == 0x60) //BME280
         {
-          Serial.println("BME280\n");
+          Serial.println("--- BME280");
         }
         else if(u == 0x61) //BME680
         {
-          Serial.println("BME680\n");
+          Serial.println("--- BME680");
         }
       }
       Serial.print("Temp ");
       Serial.print(t, DEC);
       Serial.println(" *C");
       Serial.print("Pres ");
-      Serial.print(p, DEC);
-      Serial.println(" Pa");
+      Serial.print(p/100.0, DEC);
+      Serial.println(" hPa");
       Serial.print("Alti ");
       Serial.print(a, DEC);
       Serial.println(" m");
@@ -161,15 +161,15 @@ void check_sensor(byte address)
       break;
 
     case 0x50:  //24LCxxx EEPROM
-      Serial.println("24LCxxx\n");
+      Serial.println("--- 24LCxxx");
       break;
 
     case 0x60:  //ATECCX08
-      Serial.println("ATECCX08\n");
+      Serial.println("--- ATECCX08");
       break;
 
     case 0x68:  //RV8523
-      Serial.println("RV8523\n");
+      Serial.println("--- RV8523");
       break;
   }
 
@@ -191,20 +191,20 @@ void loop()
     if(error == 0)
     {
       devices++;
-      Serial.print("Device found at 0x");
+      Serial.print("\nDevice found at 0x");
       Serial.println(address, HEX);
       check_sensor(address);
     }
     else if(error==4)
     {
-      Serial.print("Unknow error at 0x");
+      Serial.print("\nUnknow error at 0x");
       Serial.println(address, HEX);
     }
   }
 
   if(devices == 0)
   {
-    Serial.println("No devices found\n");
+    Serial.println("\nNo devices found\n");
   }
 
   delay(5000); // wait 5 seconds for next scan
