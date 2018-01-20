@@ -212,17 +212,25 @@ void initVariant()
 {
   // set power pins as outputs
   PORT->Group[1].DIRSET.reg = PORT_PB02;
-  PORT->Group[1].OUTCLR.reg = PORT_PB02; // low = UART off
+  //PORT->Group[1].OUTCLR.reg = PORT_PB02; // low = UART off
+  PORT->Group[1].OUTSET.reg = PORT_PB02; // high = UART on
+
   PORT->Group[1].DIRSET.reg = PORT_PB03;
-  PORT->Group[1].OUTSET.reg = PORT_PB03; // high = XB1 off
+  //PORT->Group[1].OUTSET.reg = PORT_PB03; // high = XB1 off
+  PORT->Group[1].OUTCLR.reg = PORT_PB03; // low = XB1 on
+
   PORT->Group[1].DIRSET.reg = PORT_PB10;
-  PORT->Group[1].OUTSET.reg = PORT_PB10; // high = XB2 off
+  //PORT->Group[1].OUTSET.reg = PORT_PB10; // high = XB2 off
+  PORT->Group[1].OUTCLR.reg = PORT_PB10; // low = XB2 on
+
   PORT->Group[1].DIRSET.reg = PORT_PB11;
-  PORT->Group[1].OUTCLR.reg = PORT_PB11; // low = I2C off
+  //PORT->Group[1].OUTCLR.reg = PORT_PB11; // low = I2C off
+  PORT->Group[1].OUTSET.reg = PORT_PB11; // high = I2C on
 
   // set LED pins as outputs
   PORT->Group[0].DIRSET.reg = PORT_PA27;
   PORT->Group[0].OUTCLR.reg = PORT_PA27; // red off
+
   PORT->Group[0].DIRSET.reg = PORT_PA28;
   PORT->Group[0].OUTCLR.reg = PORT_PA28; // green off
 
