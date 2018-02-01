@@ -23,6 +23,7 @@ void setup()
   if(WiFi.status() == WL_NO_SHIELD)
   {
     Serial.println("Error - Not Found");
+    senseBoxIO.StatusRed();
     return; // don't continue
   }
   Serial.println("OK - Detected");
@@ -49,6 +50,9 @@ void setup()
   // shutdown WINC1500
   WiFi.end();
   senseBoxIO.PowerXB1(false);
+
+  // status green
+  senseBoxIO.StatusGreen();
 }
 
 void loop()

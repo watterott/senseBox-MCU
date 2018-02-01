@@ -181,6 +181,7 @@ void loop()
   byte devices, address;
 
   Serial.println("Scanning...");
+  senseBoxIO.StatusRed();
 
   devices = 0;
   for(address = 1; address < 127; address++ )
@@ -206,6 +207,8 @@ void loop()
   {
     Serial.println("\nNo devices found\n");
   }
+  
+  senseBoxIO.StatusNone();
 
   delay(5000); // wait 5 seconds for next scan
 }

@@ -13,8 +13,6 @@ Sd2Card card;
 SdVolume volume;
 SdFile root;
 
-const int chipSelect = SDCARD_SS_PIN; // 24 is CS XB1, 28 is CS XB2
-
 void setup()
 {
   // init serial library
@@ -24,6 +22,7 @@ void setup()
 
   // microSD in XBEE2 Socket
   senseBoxIO.PowerXB2(true);
+  const int chipSelect = PIN_XB2_CS;
 
   // init card
   if(!card.init(SPI_HALF_SPEED, chipSelect))
@@ -55,6 +54,9 @@ void setup()
   Serial.println("\nFiles:");
   root.openRoot(volume);
   root.ls(LS_R | LS_DATE | LS_SIZE);
+
+  // shutdown microSD
+  senseBoxIO.PowerXB2(false);
 
   // status green
   senseBoxIO.StatusGreen();
