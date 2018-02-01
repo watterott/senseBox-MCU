@@ -20,7 +20,7 @@
           "boards": [
             {"name": "SenseBox MCU (SAMD21)"}
           ]
-        }
+        },
         {
           "name": "SenseBox SAMD Boards (dependency: Arduino SAMD Boards)",
           "architecture": "samd",
