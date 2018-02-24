@@ -6,10 +6,10 @@ Board Support Package for [Arduino IDE v1.8+](https://www.arduino.cc/en/Main/Sof
 
 Add the following URL to the Arduino Boards Manager (*File->Preferences*):
 ```
-https://github.com/watterott/SenseBox-MCU/raw/master/package_sensebox_index.json
+https://github.com/watterott/senseBox-MCU/raw/master/package_sensebox_index.json
 ```
 Then open the Arduino Boards Manager (*Tools->Boards->Boards Manager*) and install the 
-**Arduino SAMD Boards** and **SenseBox SAMD Boards**.
+**Arduino SAMD Boards** and **senseBox SAMD Boards**.
 
 
 ## Bootloader
@@ -30,7 +30,7 @@ A binary file can be generated and exported in the Arduino IDE with *Sketch->Exp
 Sometimes the driver for the USB Bootloader is not loaded correctly.
 Check the driver state in the Device Manager, when the Bootloader is active (double press reset).
 If you cannot install the driver on Windows 8 or higher then deactivate the [driver signature enforcement](https://learn.sparkfun.com/tutorials/disabling-driver-signature-on-windows-8/disabling-signed-driver-enforcement-on-windows-8).
-* [SenseBox MCU Driver](https://github.com/watterott/SenseBox-MCU/raw/master/arduino/drivers.zip)
+* [senseBox MCU Driver](https://github.com/watterott/senseBox-MCU/raw/master/arduino/drivers.zip)
 
 ### Linux
 The Modem Manager detects the Serial Ports (e.g. the USB Bootloader) as a modem and therefore a blacklist rule is needed.
