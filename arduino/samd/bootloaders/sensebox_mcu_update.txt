@@ -1,0 +1,2 @@
+sensebox_mcu_update.bin is an updater for the bootloader.
+Just copy the file on the bootloader drive for installation.

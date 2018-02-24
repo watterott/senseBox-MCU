@@ -1,6 +1,6 @@
 
-# SenseBox MCU (SAMD21)
-sb.name=SenseBox MCU
+# senseBox MCU (SAMD21)
+sb.name=senseBox MCU
 sb.vid.0=0x04D8
 sb.pid.0=0xEF66
 sb.vid.1=0x04D8
@@ -23,5 +23,5 @@ sb.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld
 sb.build.openocdscript=openocd_scripts/sensebox_mcu.cfg
 sb.build.vid=0x04D8
 sb.build.pid=0xEF67
-sb.build.usb_product="SenseBox MCU"
-sb.build.usb_manufacturer="SenseBox"
+sb.build.usb_product="senseBox MCU"
+sb.build.usb_manufacturer="eduSense"
