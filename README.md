@@ -1,6 +1,8 @@
 # senseBox MCU
 senseBox MCU is a Microchip SAMD21 based open-source board for sensors.
 
+Infos about the senseBox project: http://www.sensebox.de and https://github.com/sensebox
+
 ## Features
 * [Microchip ATSAMD21](http://www.microchip.com/wwwproducts/en/ATSAMD21G18) ARM Cortex-M0+ Microcontroller
 * [Microchip ATECC608A](http://www.microchip.com/wwwproducts/en/ATECC608A) Crypto Authentication
@@ -13,3 +15,7 @@ senseBox MCU is a Microchip SAMD21 based open-source board for sensors.
 ## Hardware and Software
 * [Schematics + Layout](https://github.com/watterott/senseBox-MCU/tree/master/hardware)
 * [Board Support Package for Arduino IDE](https://github.com/watterott/senseBox-MCU/tree/master/arduino)
+
+
+## Shop
+* [senseBox Kits](http://www.watterott.com/en/Sensors/senseBox)
