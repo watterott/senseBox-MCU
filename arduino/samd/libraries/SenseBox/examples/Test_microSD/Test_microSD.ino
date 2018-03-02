@@ -21,7 +21,10 @@ void setup()
   Serial.println("Test microSD");
 
   // microSD in XBEE2 Socket
-  senseBoxIO.PowerXB2(true);
+  senseBoxIO.PowerXB2(false); // power off to reset microSD
+  delay(250);
+  senseBoxIO.PowerXB2(true);  // power on
+  delay(500);
   const int chipSelect = PIN_XB2_CS;
 
   // init card

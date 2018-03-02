@@ -2,36 +2,49 @@
   "packages": [
     {
       "name": "sensebox",
-      "maintainer": "SenseBox",
+      "maintainer": "eduSense",
       "websiteURL": "http://www.sensebox.de",
       "email": "",
       "help": {"online": "http://www.sensebox.de"},
 
       "platforms": [
         {
-          "name": "SenseBox SAMD Boards (dependency: Arduino SAMD Boards)",
+          "name": "senseBox SAMD Boards (dependency: Arduino SAMD Boards)",
           "architecture": "samd",
-          "version": "1.0.1",
+          "version": "1.0.2",
           "category": "contributed",
-          "help": {"online": "http://www.sensebox.de"},
-          "url": "https://github.com/watterott/SenseBox-MCU/raw/master/arduino/samd.zip",
-          "archiveFileName": "sensebox-samd-1.0.0.zip",
-          "size": "390758",
+          "help": {"online": "http://www.sensebox.de/go"},
+          "url": "https://github.com/watterott/senseBox-MCU/raw/master/arduino/samd.zip",
+          "archiveFileName": "sensebox-samd-1.0.2.zip",
+          "size": "393685",
           "boards": [
             {"name": "SenseBox MCU (SAMD21)"}
           ]
         },
         {
-          "name": "SenseBox SAMD Boards (dependency: Arduino SAMD Boards)",
+          "name": "senseBox SAMD Boards (dependency: Arduino SAMD Boards)",
+          "architecture": "samd",
+          "version": "1.0.1",
+          "category": "contributed",
+          "help": {"online": "http://www.sensebox.de/go"},
+          "url": "https://github.com/watterott/senseBox-MCU/raw/cc0fe29fff5c117f275f7210bcb1923879df19b8/arduino/samd.zip",
+          "archiveFileName": "sensebox-samd-1.0.1.zip",
+          "size": "390758",
+          "boards": [
+            {"name": "senseBox MCU (SAMD21)"}
+          ]
+        },
+        {
+          "name": "senseBox SAMD Boards (dependency: Arduino SAMD Boards)",
           "architecture": "samd",
           "version": "1.0.0",
           "category": "contributed",
-          "help": {"online": "http://www.sensebox.de"},
-          "url": "https://github.com/watterott/SenseBox-MCU/raw/4336899c90df2ebf1dafd8df603b979ca0a78d0a/arduino/samd.zip",
+          "help": {"online": "http://www.sensebox.de/go"},
+          "url": "https://github.com/watterott/senseBox-MCU/raw/4336899c90df2ebf1dafd8df603b979ca0a78d0a/arduino/samd.zip",
           "archiveFileName": "sensebox-samd-1.0.0.zip",
           "size": "267652",
           "boards": [
-            {"name": "SenseBox MCU (SAMD21)"}
+            {"name": "senseBox MCU (SAMD21)"}
           ]
         }
       ],

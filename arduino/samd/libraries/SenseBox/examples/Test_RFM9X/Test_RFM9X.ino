@@ -32,7 +32,10 @@ void setup()
   Serial.println("Test RFM9X");
 
   // RFM9X (LoRa-Bee) in XBEE1 Socket
-  senseBoxIO.PowerXB1(true);
+  senseBoxIO.PowerXB1(false); // power off to reset RFM9X
+  delay(250);
+  senseBoxIO.PowerXB1(true);  // power on
+  delay(500);
   
   // init SPI
   SPI.begin();

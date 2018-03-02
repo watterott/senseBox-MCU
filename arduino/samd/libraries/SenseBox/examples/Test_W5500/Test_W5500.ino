@@ -21,7 +21,10 @@ void setup()
   Serial.println("Test W5500");
 
   // W5500 (LAN-Bee in XBEE1 Socket
-  senseBoxIO.PowerXB1(true);
+  senseBoxIO.PowerXB1(false); // power off to reset W5500
+  delay(250);
+  senseBoxIO.PowerXB1(true);  // power on
+  delay(500);
   Ethernet.init(PIN_XB1_CS);
 
   // set IP

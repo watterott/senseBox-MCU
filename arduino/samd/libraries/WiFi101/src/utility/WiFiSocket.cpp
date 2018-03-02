@@ -76,7 +76,7 @@ SOCKET WiFiSocketClass::create(uint16 u16Domain, uint8 u8Type, uint8 u8Flags)
 
 sint8 WiFiSocketClass::bind(SOCKET sock, struct sockaddr *pstrAddr, uint8 u8AddrLen)
 {
-	if (bindSocket(sock, pstrAddr, u8AddrLen) < 0) {
+	if (::bind(sock, pstrAddr, u8AddrLen) < 0) {
 		return 0;
 	}
 
@@ -106,7 +106,7 @@ sint8 WiFiSocketClass::bind(SOCKET sock, struct sockaddr *pstrAddr, uint8 u8Addr
 
 sint8 WiFiSocketClass::listen(SOCKET sock, uint8 backlog)
 {
-	if (listenSocket(sock, backlog) < 0) {
+	if (::listen(sock, backlog) < 0) {
 		return 0;
 	}
 
@@ -133,7 +133,7 @@ sint8 WiFiSocketClass::setopt(SOCKET socket, uint8 u8Level, uint8 option_name, c
 
 sint8 WiFiSocketClass::connect(SOCKET sock, struct sockaddr *pstrAddr, uint8 u8AddrLen)
 {
-	if (connectSocket(sock, pstrAddr, u8AddrLen) < 0) {
+	if (::connect(sock, pstrAddr, u8AddrLen) < 0) {
 		return 0;
 	}
 
@@ -163,6 +163,13 @@ uint8 WiFiSocketClass::connected(SOCKET sock)
 	m2m_wifi_handle_events(NULL);
 
 	return (_info[sock].state == SOCKET_STATE_CONNECTED);
+}
+
+uint8 WiFiSocketClass::listening(SOCKET sock)
+{
+	m2m_wifi_handle_events(NULL);
+
+	return (_info[sock].state == SOCKET_STATE_LISTENING);
 }
 
 int WiFiSocketClass::available(SOCKET sock)
@@ -308,7 +315,7 @@ sint16 WiFiSocketClass::sendto(SOCKET sock, void *pvSendBuffer, uint16 u16SendLe
 		return 0;
 	}
 
-	return sendtoSocket(sock, pvSendBuffer, u16SendLength, flags, pstrDestAddr, u8AddrLen);
+	return ::sendto(sock, pvSendBuffer, u16SendLength, flags, pstrDestAddr, u8AddrLen);
 }
 
 sint8 WiFiSocketClass::close(SOCKET sock)
@@ -335,7 +342,7 @@ sint8 WiFiSocketClass::close(SOCKET sock)
 	_info[sock].buffer.length = 0;
 	_info[sock].recvMsg.s16BufferSize = 0;
 
-	return closeSocket(sock);
+	return ::close(sock);
 }
 
 int WiFiSocketClass::hasParent(SOCKET sock, SOCKET child)
