@@ -1,10 +1,10 @@
 
 [Strings]
-DriverPackageDisplayName="SenseBox USB Serial Port Driver"
-ManufacturerName="SenseBox"
+DriverPackageDisplayName="senseBox USB Serial Port Driver"
+ManufacturerName="eduSense"
 ServiceName="USB RS-232 Emulation Driver"
-sb.loader="SenseBox MCU Bootloader"
-sb.sketch="SenseBox MCU"
+sb.loader="senseBox MCU Bootloader"
+sb.sketch="senseBox MCU"
 
 [DefaultInstall]
 CopyINF=sensebox.inf
@@ -16,7 +16,7 @@ Signature="$Windows NT$"
 Provider=%ManufacturerName%
 DriverPackageDisplayName=%DriverPackageDisplayName%
 CatalogFile=sensebox.cat
-DriverVer=01/01/2017,1.0.0.0
+DriverVer=01/01/2018,1.0.0.0
 
 [Manufacturer]
 %ManufacturerName%=DeviceList, NTamd64, NTia64
