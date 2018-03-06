@@ -7,7 +7,7 @@
 #include <SPI.h>
 #include <lmic.h>
 #include <hal/hal.h>
-#include <SenseBoxIO.h>
+#include <senseBoxIO.h>
 
 // LoRaWAN NwkSKey, network session key
 // This is the default Semtech key, which is used by the early prototype TTN network.
@@ -41,7 +41,7 @@ const lmic_pinmap lmic_pins = {
 
 void onEvent(ev_t ev)
 {
-  senseBoxIO.StatusGreen();
+  senseBoxIO.statusGreen();
   Serial.print(os_getTime());
   Serial.print(": ");
   switch(ev)
@@ -108,12 +108,12 @@ void onEvent(ev_t ev)
       Serial.println(F("Unknown event"));
       break;
   }
-  senseBoxIO.StatusNone();
+  senseBoxIO.statusNone();
 }
 
 void do_send(osjob_t* j)
 {
-  senseBoxIO.StatusRed();
+  senseBoxIO.statusRed();
   // sheck if there is not a current TX/RX job running
   if(LMIC.opmode & OP_TXRXPEND)
   {
@@ -126,7 +126,7 @@ void do_send(osjob_t* j)
     Serial.println(F("Packet queued"));
   }
   // next TX is scheduled after TX_COMPLETE event
-  senseBoxIO.StatusNone();
+  senseBoxIO.statusNone();
 }
 
 void setup()
@@ -137,9 +137,9 @@ void setup()
   Serial.println("Test TTN");
 
   // RFM9X (LoRa-Bee) in XBEE1 Socket
-  senseBoxIO.PowerXB1(false); // power off to reset RFM9X
+  senseBoxIO.powerXB1(false); // power off to reset RFM9X
   delay(250);
-  senseBoxIO.PowerXB1(true);  // power on
+  senseBoxIO.powerXB1(true);  // power on
   delay(500);
 
   // initialize runtime env

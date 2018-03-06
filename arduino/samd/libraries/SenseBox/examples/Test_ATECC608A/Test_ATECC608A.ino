@@ -5,7 +5,7 @@
 */
 
 #include <Wire.h>
-#include <SenseBoxIO.h>
+#include <senseBoxIO.h>
 
 // I2C commands/registers
 #define CMD_RESET (0x00)

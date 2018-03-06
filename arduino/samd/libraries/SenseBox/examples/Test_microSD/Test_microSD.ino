@@ -6,7 +6,7 @@
 
 #include <SPI.h>
 #include <SD.h>
-#include <SenseBoxIO.h>
+#include <senseBoxIO.h>
 
 // set up variables using the SD utility library functions:
 Sd2Card card;
@@ -21,9 +21,9 @@ void setup()
   Serial.println("Test microSD");
 
   // microSD in XBEE2 Socket
-  senseBoxIO.PowerXB2(false); // power off to reset microSD
+  senseBoxIO.powerXB2(false); // power off to reset microSD
   delay(250);
-  senseBoxIO.PowerXB2(true);  // power on
+  senseBoxIO.powerXB2(true);  // power on
   delay(500);
   const int chipSelect = PIN_XB2_CS;
 
@@ -31,7 +31,7 @@ void setup()
   if(!card.init(SPI_HALF_SPEED, chipSelect))
   {
     Serial.println("Error - Not Found");
-    senseBoxIO.StatusRed();
+    senseBoxIO.statusRed();
     return; // don't continue
   }
 
@@ -49,7 +49,7 @@ void setup()
   if(!volume.init(card))
   {
     Serial.println("Error - Not Found FAT16/FAT32 Partition");
-    senseBoxIO.StatusRed();
+    senseBoxIO.statusRed();
     return; // don't continue
   }
 
@@ -59,10 +59,10 @@ void setup()
   root.ls(LS_R | LS_DATE | LS_SIZE);
 
   // shutdown microSD
-  senseBoxIO.PowerXB2(false);
+  senseBoxIO.powerXB2(false);
 
   // status green
-  senseBoxIO.StatusGreen();
+  senseBoxIO.statusGreen();
 }
 
 void loop()

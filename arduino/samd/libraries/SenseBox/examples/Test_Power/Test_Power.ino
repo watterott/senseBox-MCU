@@ -5,7 +5,7 @@
 */
 
 #include <Wire.h>
-#include <SenseBoxIO.h>
+#include <senseBoxIO.h>
 
 void setup()
 {
@@ -18,38 +18,38 @@ void setup()
 void loop()
 {
   Serial.println("Red");
-  senseBoxIO.StatusRed();
+  senseBoxIO.statusRed();
   delay(1000); // wait 1000ms
-  senseBoxIO.StatusNone();
+  senseBoxIO.statusNone();
   delay(1000); // wait 1000ms
 
   Serial.println("Green");
-  senseBoxIO.StatusGreen();
+  senseBoxIO.statusGreen();
   delay(1000); // wait 1000ms
-  senseBoxIO.StatusNone();
+  senseBoxIO.statusNone();
   delay(1000); // wait 1000ms
 
   Serial.println("I2C/Wire");
-  senseBoxIO.PowerI2C(true);
+  senseBoxIO.powerI2C(true);
   delay(1000); // wait 1000ms
-  senseBoxIO.PowerI2C(false);
+  senseBoxIO.powerI2C(false);
   delay(1000); // wait 1000ms
 
   Serial.println("UART/Serial");
-  senseBoxIO.PowerUART(true);
+  senseBoxIO.powerUART(true);
   delay(1000); // wait 1000ms
-  senseBoxIO.PowerUART(false);
+  senseBoxIO.powerUART(false);
   delay(1000); // wait 1000ms
 
   Serial.println("XBEE1");
-  senseBoxIO.PowerXB1(true);
+  senseBoxIO.powerXB1(true);
   delay(1000); // wait 1000ms
-  senseBoxIO.PowerXB1(false);
+  senseBoxIO.powerXB1(false);
   delay(1000); // wait 1000ms
 
   Serial.println("XBEE2");
-  senseBoxIO.PowerXB2(true);
+  senseBoxIO.powerXB2(true);
   delay(1000); // wait 1000ms
-  senseBoxIO.PowerXB2(false);
+  senseBoxIO.powerXB2(false);
   delay(1000); // wait 1000ms
 }

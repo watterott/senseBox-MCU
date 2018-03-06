@@ -19,7 +19,7 @@
 
 #include <WiFi101.h>
 #include <spi_flash/include/spi_flash.h>
-#include <SenseBoxIO.h>
+#include <senseBoxIO.h>
 
 typedef struct __attribute__((__packed__)) {
   uint8_t command;
@@ -40,7 +40,7 @@ static const int MAX_PAYLOAD_SIZE = 1024;
 
 void setup() {
   // WINC1500 (WiFi-Bee) in XBEE1 Socket
-  senseBoxIO.PowerXB1(true);
+  senseBoxIO.powerXB1(true);
 
   Serial.begin(115200);
 

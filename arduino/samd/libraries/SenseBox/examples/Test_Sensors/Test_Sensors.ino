@@ -11,7 +11,7 @@
 #include <Adafruit_BME680.h>
 #include <Adafruit_HDC1000.h>
 #include <Makerblog_TSL45315.h>
-#include <SenseBoxIO.h>
+#include <senseBoxIO.h>
 
 void setup()
 {
@@ -21,7 +21,7 @@ void setup()
   Serial.println("Test Sensors");
 
   // power on I2C ports
-  senseBoxIO.PowerI2C(true);
+  senseBoxIO.powerI2C(true);
 
   // init I2C/Wire library
   Wire.begin();
@@ -181,7 +181,7 @@ void loop()
   byte devices, address;
 
   Serial.println("Scanning...");
-  senseBoxIO.StatusRed();
+  senseBoxIO.statusRed();
 
   devices = 0;
   for(address = 1; address < 127; address++ )
@@ -208,7 +208,7 @@ void loop()
     Serial.println("\nNo devices found\n");
   }
   
-  senseBoxIO.StatusNone();
+  senseBoxIO.statusNone();
 
   delay(5000); // wait 5 seconds for next scan
 }

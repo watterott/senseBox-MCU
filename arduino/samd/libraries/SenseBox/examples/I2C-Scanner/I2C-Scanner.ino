@@ -5,7 +5,7 @@
 */
 
 #include <Wire.h>
-#include <SenseBoxIO.h>
+#include <senseBoxIO.h>
 
 void setup()
 {
@@ -15,7 +15,7 @@ void setup()
   Serial.println("I2C Scanner");
 
   // power on I2C ports
-  senseBoxIO.PowerI2C(true);
+  senseBoxIO.powerI2C(true);
 
   // init I2C/Wire library
   Wire.begin();

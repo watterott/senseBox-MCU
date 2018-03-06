@@ -5,7 +5,7 @@
 */
 
 #include <Wire.h>
-#include <SenseBoxIO.h>
+#include <senseBoxIO.h>
 
 void read(byte addr, byte reg, byte *data, byte len)
 {
@@ -40,16 +40,17 @@ void setup()
   Wire1.begin();
 
   // init BMX055
+  write(I2C_MAGNET, 0x4B, 0x83); // PWR=0x81       soft-reset
+  delay(20); // wait 20ms
+  write(I2C_MAGNET, 0x4C, 0x00); // CTRL=0x00      normal, ODR 10Hz
+  write(I2C_MAGNET, 0x51, 0x10); // REP_XY=0x10    16*2+1=33 repetitions
+  write(I2C_MAGNET, 0x52, 0x20); // REP_Z=0x20     32+1=33 repetitions
   write(I2C_ACCEL, 0x0F, 0x03);  // PMU_RANGE=0x03 +/-2g
   write(I2C_ACCEL, 0x10, 0x08);  // PMU_BW=0x08    7.81Hz
   write(I2C_ACCEL, 0x11, 0x00);  // PMU_LPW=0x00   normal, sleep 0.5ms
   write(I2C_GYRO, 0x0F, 0x04);   // RANGE=0x04     +/-125deg/s
   write(I2C_GYRO, 0x10, 0x07);   // BW=0x07        100Hz
   write(I2C_GYRO, 0x11, 0x00);   // LPM1=0x00      normal, sleep 2ms
-  write(I2C_MAGNET, 0x4B, 0x83); // PWR=0x81       soft-reset
-  write(I2C_MAGNET, 0x4C, 0x00); // CTRL=0x00      normal, ODR 10Hz
-  write(I2C_MAGNET, 0x51, 0x10); // REP_XY=0x10    16*2+1=33 repetitions
-  write(I2C_MAGNET, 0x52, 0x20); // REP_Z=0x20     32+1=33 repetitions
 
   delay(500); // wait 500ms
 }

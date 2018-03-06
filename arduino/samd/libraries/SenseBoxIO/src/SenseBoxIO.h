@@ -1,12 +1,20 @@
 
 #define PIN_I2C_PWR   (5)
 #define PIN_UART_PWR  (16)
+#define PIN_UART_RX1  (1)
+#define PIN_UART_TX1  (0)
+#define PIN_UART_RX2  (33)
+#define PIN_UART_TX2  (32)
 #define PIN_XB1_PWR   (17)
-#define PIN_XB2_PWR   (4)
 #define PIN_XB1_CS    (24)
-#define PIN_XB2_CS    (28)
 #define PIN_XB1_INT   (7)
+#define PIN_XB1_RX    (13)
+#define PIN_XB1_TX    (14)
+#define PIN_XB2_PWR   (4)
+#define PIN_XB2_CS    (28)
 #define PIN_XB2_INT   (29)
+#define PIN_XB2_RX    (3)
+#define PIN_XB2_TX    (2)
 #define PIN_RED_LED   (30)
 #define PIN_GREEN_LED (31)
 #define PIN_SWITCH    (6)
@@ -28,92 +36,141 @@ class SenseBoxIO
 public:
   SenseBoxIO()
   {
+    pinMode(PIN_SPI_MISO, INPUT_PULLUP);
     pinMode(PIN_XB1_CS, OUTPUT);
     pinMode(PIN_XB2_CS, OUTPUT);
+    SPIselectNone();
     pinMode(PIN_RED_LED, OUTPUT);
     pinMode(PIN_GREEN_LED, OUTPUT);
-    PowerI2C(false);
-    PowerUART(false);
-    PowerXB1(false);
-    PowerXB2(false);
-    SPISelectNone();
-    StatusNone();
+    statusNone();
+    powerAll();
   }
 
-  void StatusNone(void)
+  void statusNone(void)
   {
     digitalWrite(PIN_GREEN_LED, LOW);
     digitalWrite(PIN_RED_LED, LOW);
   }
 
-  void StatusRed(void)
+  void statusRed(void)
   {
     digitalWrite(PIN_GREEN_LED, LOW);
     digitalWrite(PIN_RED_LED, HIGH);
   }
 
-  void StatusGreen(void)
+  void statusGreen(void)
   {
     digitalWrite(PIN_RED_LED, LOW);
     digitalWrite(PIN_GREEN_LED, HIGH);
   }
 
-  void StatusSet(int s)
+  void statusSet(int s)
   {
     switch(s)
     {
-      case 0: StatusNone();               break;
-      case 1: StatusRed();                break;
-      case 2: StatusGreen();              break;
-      case 3: StatusRed(); StatusGreen(); break;
+      case 0: statusNone();               break;
+      case 1: statusRed();                break;
+      case 2: statusGreen();              break;
+      case 3: statusRed(); statusGreen(); break;
     }
   }
 
-  void PowerI2C(bool on)
+  void powerNone(void)
+  {
+    powerI2C(false);
+    powerUART(false);
+    powerXB1(false);
+    powerXB2(false);
+  }
+
+  void powerAll(void)
+  {
+    powerI2C(true);
+    powerUART(true);
+    powerXB1(true);
+    powerXB2(true);
+  }
+
+  void powerI2C(bool on)
   {
     pinMode(PIN_I2C_PWR, OUTPUT);
     digitalWrite(PIN_I2C_PWR, (on) ? HIGH : LOW); // non inverted
   }
 
-  void PowerUART(bool on)
+  void powerUART(bool on)
   {
     pinMode(PIN_UART_PWR, OUTPUT);
-    digitalWrite(PIN_UART_PWR, (on) ? HIGH : LOW); // non inverted
+    if(on)
+    {
+      digitalWrite(PIN_UART_PWR, HIGH); // non inverted
+      pinMode(PIN_UART_RX1, INPUT_PULLUP);
+      pinMode(PIN_UART_TX1, OUTPUT);
+      pinMode(PIN_UART_RX2, INPUT_PULLUP);
+      pinMode(PIN_UART_TX2, OUTPUT);
+    }
+    else // off
+    {
+      pinMode(PIN_UART_RX1, INPUT_PULLDOWN);
+      pinMode(PIN_UART_TX1, INPUT_PULLDOWN);
+      pinMode(PIN_UART_RX2, INPUT_PULLDOWN);
+      pinMode(PIN_UART_TX2, INPUT_PULLDOWN);
+      digitalWrite(PIN_UART_PWR, LOW); // non inverted
+    }
   }
 
-  void PowerXB1(bool on)
+  void powerXB1(bool on)
   {
     pinMode(PIN_XB1_PWR, OUTPUT);
-    digitalWrite(PIN_XB1_PWR, (on) ? LOW : HIGH); // inverted
     if(on)
     {
+      digitalWrite(PIN_XB1_PWR, LOW); // inverted
+      pinMode(PIN_XB1_INT, INPUT_PULLDOWN);
+      pinMode(PIN_XB1_RX, INPUT_PULLUP);
+      pinMode(PIN_XB1_TX, OUTPUT);
       delay(500); // wait 500ms (MAX809 reset circuit)
+    }
+    else // off
+    {
+      pinMode(PIN_XB1_INT, INPUT_PULLDOWN);
+      pinMode(PIN_XB1_RX, INPUT_PULLDOWN);
+      pinMode(PIN_XB1_TX, INPUT_PULLDOWN);
+      digitalWrite(PIN_XB1_PWR, HIGH); // inverted
     }
   }
 
-  void PowerXB2(bool on)
+  void powerXB2(bool on)
   {
     pinMode(PIN_XB2_PWR, OUTPUT);
-    digitalWrite(PIN_XB2_PWR, (on) ? LOW : HIGH); // inverted
     if(on)
     {
+      digitalWrite(PIN_XB2_PWR, LOW); // inverted
+      pinMode(PIN_XB2_INT, INPUT_PULLDOWN);
+      pinMode(PIN_XB2_RX, INPUT_PULLUP);
+      pinMode(PIN_XB2_TX, OUTPUT);
       delay(500); // wait 500ms (MAX809 reset circuit)
+    }
+    else // off
+    {
+      pinMode(PIN_XB2_INT, INPUT_PULLDOWN);
+      pinMode(PIN_XB2_RX, INPUT_PULLDOWN);
+      pinMode(PIN_XB2_TX, INPUT_PULLDOWN);
+      digitalWrite(PIN_XB2_PWR, HIGH); // inverted
     }
   }
 
-  void SPISelectNone(void)
+  void SPIselectNone(void)
   {
     digitalWrite(PIN_XB1_CS, HIGH);
     digitalWrite(PIN_XB2_CS, HIGH);
   }
 
-  void SPISelectXB1(void)
+  void SPIselectXB1(void)
   {
     digitalWrite(PIN_XB2_CS, HIGH);
     digitalWrite(PIN_XB1_CS, LOW);
   }
 
-  void SPISelectXB2(void)
+  void SPIselectXB2(void)
   {
     digitalWrite(PIN_XB1_CS, HIGH);
     digitalWrite(PIN_XB2_CS, LOW);

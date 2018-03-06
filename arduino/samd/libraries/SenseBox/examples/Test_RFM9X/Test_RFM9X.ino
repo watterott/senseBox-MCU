@@ -5,7 +5,7 @@
 */
 
 #include <SPI.h>
-#include <SenseBoxIO.h>
+#include <senseBoxIO.h>
 
 byte transfer(byte addr, byte value)
 {
@@ -32,9 +32,9 @@ void setup()
   Serial.println("Test RFM9X");
 
   // RFM9X (LoRa-Bee) in XBEE1 Socket
-  senseBoxIO.PowerXB1(false); // power off to reset RFM9X
+  senseBoxIO.powerXB1(false); // power off to reset RFM9X
   delay(250);
-  senseBoxIO.PowerXB1(true);  // power on
+  senseBoxIO.powerXB1(true);  // power on
   delay(500);
   
   // init SPI
@@ -48,16 +48,16 @@ void setup()
   if(i != 0x12)
   {
     Serial.println("Error - Not Found");
-    senseBoxIO.StatusRed();
+    senseBoxIO.statusRed();
     return; // don't continue
   }
   Serial.println("OK - Detected");
 
   // shutdown RFM9X
-  senseBoxIO.PowerXB1(false);
+  senseBoxIO.powerXB1(false);
 
   // status green
-  senseBoxIO.StatusGreen();
+  senseBoxIO.statusGreen();
 }
 
 void loop()

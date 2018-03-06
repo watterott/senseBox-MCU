@@ -12,19 +12,19 @@ senseBoxIO	KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 
-StatusNone	KEYWORD2
-StatusRed	KEYWORD2
-StatusGreen	KEYWORD2
-StatusSet	KEYWORD2
+statusNone	KEYWORD2
+statusRed	KEYWORD2
+statusGreen	KEYWORD2
+statusSet	KEYWORD2
 
-PowerI2C	KEYWORD2
-PowerUART	KEYWORD2
-PowerXB1	KEYWORD2
-PowerXB2	KEYWORD2
+powerI2C	KEYWORD2
+powerUART	KEYWORD2
+powerXB1	KEYWORD2
+powerXB2	KEYWORD2
 
-SPISelectNone	KEYWORD2
-SPISelectXB1	KEYWORD2
-SPISelectXB2	KEYWORD2
+SPIselectNone	KEYWORD2
+SPIselectXB1	KEYWORD2
+SPIselectXB2	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)

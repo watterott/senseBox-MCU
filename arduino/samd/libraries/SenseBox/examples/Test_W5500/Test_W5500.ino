@@ -6,7 +6,7 @@
 
 #include <SPI.h>
 #include <Ethernet2.h>
-#include <SenseBoxIO.h>
+#include <senseBoxIO.h>
 
 byte mac[] = {0xDE,0xAD,0xBE,0xEF,0xFE,0xED};
 IPAddress ip(192,168,1,177);
@@ -21,9 +21,9 @@ void setup()
   Serial.println("Test W5500");
 
   // W5500 (LAN-Bee in XBEE1 Socket
-  senseBoxIO.PowerXB1(false); // power off to reset W5500
+  senseBoxIO.powerXB1(false); // power off to reset W5500
   delay(250);
-  senseBoxIO.PowerXB1(true);  // power on
+  senseBoxIO.powerXB1(true);  // power on
   delay(500);
   Ethernet.init(PIN_XB1_CS);
 
@@ -38,7 +38,7 @@ void setup()
      (ip[3] != ip2[3]))
   {
     Serial.println("Error - Not Found");
-    senseBoxIO.StatusRed();
+    senseBoxIO.statusRed();
     return; // don't continue
   }
   Serial.println("OK - Detected");
@@ -48,7 +48,7 @@ void setup()
   Serial.println(ip2);
 
   // status green
-  senseBoxIO.StatusGreen();
+  senseBoxIO.statusGreen();
 }
 
 void loop()
