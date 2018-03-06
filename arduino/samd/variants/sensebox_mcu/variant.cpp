@@ -38,8 +38,8 @@ const PinDescription g_APinDescription[] = {
  */
   { PORTA, 22, PIO_SERCOM,  (PIN_ATTR_DIGITAL|PIN_ATTR_PWM|PIN_ATTR_TIMER    ), No_ADC_Channel, PWM4_CH0,   TC4_CH0,      EXTERNAL_INT_6    }, // Tx1: SERCOM3/PAD[0]
   { PORTA, 23, PIO_SERCOM,  (PIN_ATTR_DIGITAL|PIN_ATTR_PWM|PIN_ATTR_TIMER    ), No_ADC_Channel, PWM4_CH1,   TC4_CH1,      EXTERNAL_INT_7    }, // Rx1: SERCOM3/PAD[1]
-  { PORTA, 10, PIO_SERCOM,  (PIN_ATTR_DIGITAL|PIN_ATTR_PWM|PIN_ATTR_TIMER    ), ADC_Channel18,  PWM1_CH0,   TCC1_CH0,     EXTERNAL_INT_NONE }, // Tx XB2: SERCOM0/PAD[2]
-  { PORTA, 11, PIO_SERCOM,  (PIN_ATTR_DIGITAL|PIN_ATTR_PWM|PIN_ATTR_TIMER    ), ADC_Channel19,  PWM1_CH1,   TCC1_CH1,     EXTERNAL_INT_NONE }, // Rx XB2: SERCOM0/PAD[3]
+  { PORTA, 10, PIO_DIGITAL, (PIN_ATTR_DIGITAL|PIN_ATTR_PWM|PIN_ATTR_TIMER    ), ADC_Channel18,  PWM1_CH0,   TCC1_CH0,     EXTERNAL_INT_NONE }, // Tx XB2
+  { PORTA, 11, PIO_DIGITAL, (PIN_ATTR_DIGITAL|PIN_ATTR_PWM|PIN_ATTR_TIMER    ), ADC_Channel19,  PWM1_CH1,   TCC1_CH1,     EXTERNAL_INT_NONE }, // Rx XB2
   { PORTB, 10, PIO_DIGITAL, (PIN_ATTR_DIGITAL|PIN_ATTR_PWM|PIN_ATTR_TIMER    ), No_ADC_Channel, PWM5_CH0,   TC5_CH0,      EXTERNAL_INT_NONE }, // Pwr XB2
   { PORTB, 11, PIO_DIGITAL, (PIN_ATTR_DIGITAL|PIN_ATTR_PWM|PIN_ATTR_TIMER    ), No_ADC_Channel, PWM5_CH1,   TC5_CH1,      EXTERNAL_INT_NONE }, // Pwr I2C
   { PORTA, 20, PIO_DIGITAL, (PIN_ATTR_DIGITAL|PIN_ATTR_PWM|PIN_ATTR_TIMER_ALT), No_ADC_Channel, PWM0_CH6,   TCC0_CH6,     EXTERNAL_INT_4    }, // SW
@@ -70,8 +70,8 @@ const PinDescription g_APinDescription[] = {
   { PORTA, 19, PIO_SERCOM,  (PIN_ATTR_DIGITAL|PIN_ATTR_PWM|PIN_ATTR_TIMER    ), No_ADC_Channel, PWM3_CH1,   TC3_CH1,      EXTERNAL_INT_NONE }, // MISO: SERCOM1/PAD[3]
 
                                                                                                                                                // PINOUT=1
-  { PORTA,  8, PIO_SERCOM_ALT, (PIN_ATTR_DIGITAL                             ), ADC_Channel16,  NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NMI  }, // SDA: SERCOM2/PAD[0]
-  { PORTA,  9, PIO_SERCOM_ALT, (PIN_ATTR_DIGITAL                             ), ADC_Channel17,  NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // SCL: SERCOM2/PAD[1]
+  { PORTA,  8, PIO_SERCOM,  (PIN_ATTR_DIGITAL                                ), ADC_Channel16,  NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NMI  }, // SDA: SERCOM0/PAD[0]
+  { PORTA,  9, PIO_SERCOM,  (PIN_ATTR_DIGITAL                                ), ADC_Channel17,  NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // SCL: SERCOM0/PAD[1]
 
                                                                                                                                                // RXPO=3 TXPO=1
   { PORTB, 23, PIO_SERCOM_ALT, (PIN_ATTR_DIGITAL                             ), No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // Rx XB1: SERCOM5/PAD[3]
@@ -144,8 +144,8 @@ const PinDescription g_APinDescription[] = {
  +------------+------------------+--------+-----------------+--------+-----+-----+-----+-----+---------+---------+--------+--------+----------+----------+
  */
                                                                                                                                                // PINOUT=1
-  { PORTA, 12, PIO_SERCOM_ALT, (PIN_ATTR_NONE                                ), No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // SDA: SERCOM4/PAD[0]
-  { PORTA, 13, PIO_SERCOM_ALT, (PIN_ATTR_NONE                                ), No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // SCL: SERCOM4/PAD[1]
+  { PORTA, 12, PIO_SERCOM,     (PIN_ATTR_NONE                                ), No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // SDA: SERCOM2/PAD[0]
+  { PORTA, 13, PIO_SERCOM,     (PIN_ATTR_NONE                                ), No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // SCL: SERCOM2/PAD[1]
 
   { PORTA, 14, PIO_DIGITAL,    (PIN_ATTR_NONE                                ), No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // CS XB2
   { PORTA, 15, PIO_DIGITAL,    (PIN_ATTR_NONE                                ), No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_15   }, // INT XB2
@@ -172,27 +172,27 @@ SERCOM sercom5(SERCOM5);
 
 
 // Serial1
-Uart Serial1(&sercom5, PIN_SERIAL1_RX, PIN_SERIAL1_TX, PAD_SERIAL1_RX, PAD_SERIAL1_TX);
+Uart Serial1(&sercom3, PIN_SERIAL1_RX, PIN_SERIAL1_TX, PAD_SERIAL1_RX, PAD_SERIAL1_TX);
 
-void SERCOM5_Handler()
+void SERCOM3_Handler()
 {
   Serial1.IrqHandler();
 }
 
 
 // Serial2
-Uart Serial2(&sercom0, PIN_SERIAL2_RX, PIN_SERIAL2_TX, PAD_SERIAL2_RX, PAD_SERIAL2_TX);
+Uart Serial2(&sercom4, PIN_SERIAL2_RX, PIN_SERIAL2_TX, PAD_SERIAL2_RX, PAD_SERIAL2_TX);
 
-void SERCOM0_Handler()
+void SERCOM4_Handler()
 {
   Serial2.IrqHandler();
 }
 
 
 // Serial3
-Uart Serial3(&sercom3, PIN_SERIAL3_RX, PIN_SERIAL3_TX, PAD_SERIAL3_RX, PAD_SERIAL3_TX);
+Uart Serial3(&sercom5, PIN_SERIAL3_RX, PIN_SERIAL3_TX, PAD_SERIAL3_RX, PAD_SERIAL3_TX);
 
-void SERCOM3_Handler()
+void SERCOM5_Handler()
 {
   Serial3.IrqHandler();
 }
@@ -200,9 +200,9 @@ void SERCOM3_Handler()
 
 // Serial4
 /*
-Uart Serial4(&sercom4, PIN_SERIAL4_RX, PIN_SERIAL4_TX, PAD_SERIAL4_RX, PAD_SERIAL4_TX);
+Uart Serial4(&sercom2, PIN_SERIAL4_RX, PIN_SERIAL4_TX, PAD_SERIAL4_RX, PAD_SERIAL4_TX);
 
-void SERCOM4_Handler()
+void SERCOM2_Handler()
 {
   Serial4.IrqHandler();
 }
@@ -212,29 +212,27 @@ void initVariant()
 {
   // set power pins as outputs
   PORT->Group[1].DIRSET.reg = PORT_PB02;
-  //PORT->Group[1].OUTCLR.reg = PORT_PB02; // low = UART off
-  PORT->Group[1].OUTSET.reg = PORT_PB02; // high = UART on
-
-  PORT->Group[1].DIRSET.reg = PORT_PB03;
-  //PORT->Group[1].OUTSET.reg = PORT_PB03; // high = XB1 off
-  PORT->Group[1].OUTCLR.reg = PORT_PB03; // low = XB1 on
-
-  PORT->Group[1].DIRSET.reg = PORT_PB10;
-  //PORT->Group[1].OUTSET.reg = PORT_PB10; // high = XB2 off
-  PORT->Group[1].OUTCLR.reg = PORT_PB10; // low = XB2 on
+  PORT->Group[1].OUTSET.reg = PORT_PB02; // high = UART Power on
 
   PORT->Group[1].DIRSET.reg = PORT_PB11;
-  //PORT->Group[1].OUTCLR.reg = PORT_PB11; // low = I2C off
-  PORT->Group[1].OUTSET.reg = PORT_PB11; // high = I2C on
+  PORT->Group[1].OUTSET.reg = PORT_PB11; // high = I2C Power on
+
+  PORT->Group[1].DIRSET.reg = PORT_PB03;
+  PORT->Group[1].OUTCLR.reg = PORT_PB03; // low = XB1 Power on
+
+  PORT->Group[0].DIRSET.reg = PORT_PA18;
+  PORT->Group[0].OUTSET.reg = PORT_PA18; // high = XB1 CS off
+
+  PORT->Group[1].DIRSET.reg = PORT_PB10;
+  PORT->Group[1].OUTCLR.reg = PORT_PB10; // low = XB2 Power on
+
+  PORT->Group[0].DIRSET.reg = PORT_PA14;
+  PORT->Group[0].OUTSET.reg = PORT_PA14; // high = XB2 CS off
 
   // set LED pins as outputs
   PORT->Group[0].DIRSET.reg = PORT_PA27;
-  PORT->Group[0].OUTCLR.reg = PORT_PA27; // red off
+  PORT->Group[0].OUTCLR.reg = PORT_PA27; // red LED off
 
   PORT->Group[0].DIRSET.reg = PORT_PA28;
-  PORT->Group[0].OUTCLR.reg = PORT_PA28; // green off
-
-  // set INT/IRQ pins as inputs
-  PORT->Group[0].DIRCLR.reg = PORT_PA15; // XB2 INT
-  PORT->Group[0].DIRCLR.reg = PORT_PA21; // XB1 INT
+  PORT->Group[0].OUTCLR.reg = PORT_PA28; // green LED off
 }
