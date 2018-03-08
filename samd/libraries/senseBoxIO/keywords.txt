@@ -1,0 +1,31 @@
+#######################################
+# Syntax Coloring Map For WiFi
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+senseBoxIO	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+statusNone	KEYWORD2
+statusRed	KEYWORD2
+statusGreen	KEYWORD2
+statusSet	KEYWORD2
+
+powerI2C	KEYWORD2
+powerUART	KEYWORD2
+powerXB1	KEYWORD2
+powerXB2	KEYWORD2
+
+SPIselectNone	KEYWORD2
+SPIselectXB1	KEYWORD2
+SPIselectXB2	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
