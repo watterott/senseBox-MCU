@@ -10,8 +10,121 @@
 #include <Adafruit_BME280.h>
 #include <Adafruit_BME680.h>
 #include <Adafruit_HDC1000.h>
-#include <Makerblog_TSL45315.h>
 #include <senseBoxIO.h>
+
+enum SSD1306Commands
+{
+    SSD1306_SETLOWCOLUMN     = 0x00,
+    SSD1306_SETHIGHCOLUMN    = 0x10,
+    SSD1306_MEMORYMODE       = 0x20,
+    SSD1306_COLUMNADDR       = 0x21,
+    SSD1306_PAGEADDR         = 0x22,
+    SSD1306_DEACTIVATESCROLL = 0x2E,
+    SSD1306_SETSTARTLINE     = 0x40,
+    SSD1306_SETCONTRAST      = 0x81,
+    SSD1306_CHARGEPUMP       = 0x8D,
+    SSD1306_SEGREMAP         = 0xA0,
+    SSD1306_DISPLAYALLON_RESUME = 0xA4,
+    SSD1306_DISPLAYALLON     = 0xA5,
+    SSD1306_NORMALDISPLAY    = 0xA6,
+    SSD1306_INVERTDISPLAY    = 0xA7,
+    SSD1306_SETMULTIPLEX     = 0xA8,
+    SSD1306_DISPLAYOFF       = 0xAE,
+    SSD1306_DISPLAYON        = 0xAF,
+    SSD1306_SETPAGE          = 0xB0,
+    SSD1306_COMSCANINC       = 0xC0,
+    SSD1306_COMSCANDEC       = 0xC8,
+    SSD1306_SETDISPLAYOFFSET = 0xD3,
+    SSD1306_SETDISPLAYCLOCKDIV = 0xD5,
+    SSD1306_SETPRECHARGE     = 0xD9,
+    SSD1306_SETCOMPINS       = 0xDA,
+    SSD1306_SETVCOMDETECT    = 0xDB,
+    SSD1306_SWITCHCAPVCC     = 0x02,
+    SSD1306_NOP              = 0xE3,
+};
+
+enum SSD1306MemoryMode
+{
+    HOR_ADDR_MODE  = 0x00,
+    VER_ADDR_MODE  = 0x01,
+    PAGE_ADDR_MODE = 0x02,
+};
+
+static const uint8_t oled128x64[] =
+{
+  SSD1306_DISPLAYOFF,                // display off (sleep mode)
+  SSD1306_NORMALDISPLAY,             // display normal
+  SSD1306_DEACTIVATESCROLL,          // deativate scroll
+  SSD1306_COMSCANDEC,                // scan from 127 to 0 (Reverse scan)
+  SSD1306_SETSTARTLINE | 0x00,       // first line to start scanning from
+  SSD1306_SETCONTRAST, 0x7F,         // contast value to 0x7F according to datasheet
+  SSD1306_SEGREMAP | 0x01,           // use reverse mapping. 0x00 - is normal mapping 
+  SSD1306_SETMULTIPLEX, 63,          // reset to default MUX
+  SSD1306_SETDISPLAYOFFSET, 0x00,    // no offset
+  SSD1306_SETDISPLAYCLOCKDIV, 0x80,  // set to default ratio/osc frequency
+  SSD1306_SETPRECHARGE, 0x22,        // switch precharge to 0x22 // 0xF1
+  SSD1306_SETCOMPINS, 0x12,          // set divide ratio
+  SSD1306_SETVCOMDETECT, 0x20,       // vcom deselect to 0x20 // 0x40
+  SSD1306_CHARGEPUMP, 0x14,          // enable charge pump
+  SSD1306_MEMORYMODE, HOR_ADDR_MODE, // page addressing mode
+  SSD1306_SETPAGE | 0x00,            // set page start address
+  SSD1306_SETLOWCOLUMN | 0x00,       // set low column start address
+  SSD1306_SETHIGHCOLUMN | 0x00,      // set high column address
+  SSD1306_DISPLAYALLON_RESUME,       // display RAM contents
+  SSD1306_DISPLAYON,                 // display on
+};
+
+void ssd1306_cmd(byte addr, byte cmd)
+{
+  Wire.beginTransmission(addr);
+  Wire.write(0x00); //0x00=cmd, 0x40=data
+  Wire.write(cmd);
+  Wire.endTransmission();
+}
+
+void ssd1306_fill(byte addr)
+{
+  Wire.beginTransmission(addr);
+  Wire.write(0x00); //0x00=cmd, 0x40=data
+  Wire.write(SSD1306_PAGEADDR);
+  Wire.write(0);
+  Wire.write(7);
+  Wire.endTransmission();
+  
+  Wire.beginTransmission(addr);
+  Wire.write(0x00); //0x00=cmd, 0x40=data
+  Wire.write(SSD1306_COLUMNADDR);
+  Wire.write(0);
+  Wire.write(128-1);
+  Wire.endTransmission();
+
+  for(unsigned int i=0; i < 128*64/8; i+=8)
+  {
+    Wire.beginTransmission(addr);
+    Wire.write(0x40); //0x00=cmd, 0x40=data
+    Wire.write(0x0F);
+    Wire.write(0x0F);
+    Wire.write(0x0F);
+    Wire.write(0x0F);
+    Wire.write(0xF0);
+    Wire.write(0xF0);
+    Wire.write(0xF0);
+    Wire.write(0xF0);
+    Wire.endTransmission();
+  }
+}
+
+void ssd1306_init(byte addr)
+{
+  const uint8_t *ptr;
+
+  ptr = &oled128x64[0];
+  for(byte i=0; i < sizeof(oled128x64); i++)
+  {
+    byte c = *ptr++;
+    ssd1306_cmd(addr, c);
+  }
+}
 
 void setup()
 {
@@ -36,7 +149,6 @@ void check_sensor(byte address)
   Adafruit_BME280 bme280;
   Adafruit_BME680 bme680;
   Adafruit_HDC1000 hdc;
-  Makerblog_TSL45315 tsl = Makerblog_TSL45315(TSL45315_TIME_M4);
 
   if((address == 0) || (address > 127))
   {
@@ -47,8 +159,23 @@ void check_sensor(byte address)
   {
     case 0x29:  //TSL45315
       Serial.println("--- TSL45315");
-      tsl.begin();
-      l = tsl.readLux();
+      Wire.beginTransmission(address);
+      Wire.write(0x80|0x00); //control
+      Wire.write(0x03);
+      Wire.endTransmission();
+      Wire.beginTransmission(address);
+      Wire.write(0x80|0x01); //config
+      Wire.write(0x02); //M=4 T=100ms
+      Wire.endTransmission();
+      delay(120);
+      Wire.beginTransmission(address);
+      Wire.write(0x80|0x04); //data low
+      Wire.endTransmission();
+      Wire.requestFrom((uint8_t)address, (uint8_t)2);
+      delay(1);
+      u |= (Wire.read()<<8);
+      u |= (Wire.read()<<8);
+      l = u * 4;
       Serial.print("Lux ");
       Serial.println(l, DEC);
       break;
@@ -59,11 +186,11 @@ void check_sensor(byte address)
       Wire.beginTransmission(address);
       Wire.write((0x1<<2) | 0x02); //Integration Time 1
       Wire.endTransmission();
-      delay(100);
-      Wire.requestFrom(address+1, 1); //MSB
+      delay(120);
+      Wire.requestFrom((uint8_t)(address+1), (uint8_t)1); //MSB
       delay(1);
       u |= (Wire.read()<<8);
-      Wire.requestFrom(address+0, 1); //LSB
+      Wire.requestFrom((uint8_t)(address+0), (uint8_t)1); //LSB
       delay(1);
       u |= (Wire.read()<<0);
       Serial.print("UV ");
@@ -72,7 +199,7 @@ void check_sensor(byte address)
 
     case 0x40:  //HDC100X
     case 0x41:
-    case 0x42:
+    //case 0x42:
     case 0x43:
       Serial.println("--- HDC100X");
       hdc.begin(address);
@@ -160,12 +287,23 @@ void check_sensor(byte address)
       }
       break;
 
+    case 0x3C:  //OLED SSD1306
+    case 0x3D:
+      Serial.println("--- SSD1306\n");
+      ssd1306_init(address);
+      ssd1306_fill(address);
+      break;
+
+    case 0x42:  //CAM-M8Q
+      Serial.println("--- CAM-M8Q");
+      break;
+
     case 0x50:  //24LCxxx EEPROM
       Serial.println("--- 24LCxxx");
       break;
 
-    case 0x60:  //ATECCX08
-      Serial.println("--- ATECCX08");
+    case 0x60:  //ATECCx08
+      Serial.println("--- ATECCx08");
       break;
 
     case 0x68:  //RV8523
