@@ -140,7 +140,6 @@ void setup()
   senseBoxIO.powerXB1(false); // power off to reset RFM9X
   delay(250);
   senseBoxIO.powerXB1(true);  // power on
-  delay(500);
 
   // initialize runtime env
   os_init();

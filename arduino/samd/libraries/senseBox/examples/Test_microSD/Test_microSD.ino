@@ -24,10 +24,9 @@ void setup()
   senseBoxIO.powerXB2(false); // power off to reset microSD
   delay(250);
   senseBoxIO.powerXB2(true);  // power on
-  delay(500);
-  const int chipSelect = PIN_XB2_CS;
 
   // init card
+  const int chipSelect = PIN_XB2_CS;
   if(!card.init(SPI_HALF_SPEED, chipSelect))
   {
     Serial.println("Error - Not Found");

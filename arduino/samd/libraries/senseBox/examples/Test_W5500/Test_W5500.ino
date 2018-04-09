@@ -24,7 +24,6 @@ void setup()
   senseBoxIO.powerXB1(false); // power off to reset W5500
   delay(250);
   senseBoxIO.powerXB1(true);  // power on
-  delay(500);
   Ethernet.init(PIN_XB1_CS);
 
   // set IP

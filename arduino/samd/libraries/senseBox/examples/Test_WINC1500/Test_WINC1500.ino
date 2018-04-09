@@ -20,7 +20,6 @@ void setup()
   senseBoxIO.powerXB1(false); // power off to reset WINC1500
   delay(250);
   senseBoxIO.powerXB1(true);  // power on
-  delay(500);
 
   // init WINC1500
   if(WiFi.status() == WL_NO_SHIELD)
