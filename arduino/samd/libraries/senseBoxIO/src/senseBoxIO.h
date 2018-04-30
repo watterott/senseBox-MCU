@@ -66,12 +66,14 @@ public:
 
   void statusSet(int s)
   {
-    switch(s)
+    statusNone();
+    if(s & 0x01)
     {
-      case 0: statusNone();               break;
-      case 1: statusRed();                break;
-      case 2: statusGreen();              break;
-      case 3: statusRed(); statusGreen(); break;
+      digitalWrite(PIN_RED_LED, HIGH);
+    }
+    if(s & 0x02)
+    {
+      digitalWrite(PIN_GREEN_LED, HIGH);
     }
   }
 
