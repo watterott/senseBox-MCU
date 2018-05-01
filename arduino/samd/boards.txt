@@ -24,4 +24,4 @@ sb.build.openocdscript=openocd_scripts/sensebox_mcu.cfg
 sb.build.vid=0x04D8
 sb.build.pid=0xEF67
 sb.build.usb_product="senseBox MCU"
-sb.build.usb_manufacturer="eduSense"
+sb.build.usb_manufacturer="senseBox"

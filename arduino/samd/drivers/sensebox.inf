@@ -1,7 +1,7 @@
 
 [Strings]
 DriverPackageDisplayName="senseBox USB Serial Port Driver"
-ManufacturerName="eduSense"
+ManufacturerName="senseBox"
 ServiceName="USB RS-232 Emulation Driver"
 sb.loader="senseBox MCU Bootloader"
 sb.sketch="senseBox MCU"
