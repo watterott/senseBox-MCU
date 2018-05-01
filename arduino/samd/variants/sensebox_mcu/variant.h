@@ -37,10 +37,10 @@
 
 // Number of pins defined in PinDescription array
 #define PINS_COUNT           (34u) // 34
-#define NUM_DIGITAL_PINS     (22u) // 22
+#define NUM_DIGITAL_PINS     (32u) // 32
 #define NUM_ANALOG_INPUTS    (7u)  // 7
 #define NUM_ANALOG_OUTPUTS   (1u)  // 1
-#define analogInputToDigitalPin(p)  ((p < 7u) ? (p) + 15u : -1)
+#define analogInputToDigitalPin(p)  ((p < 7u) ? (p) : -1)
 
 // Low-level pin register query macros
 // -----------------------------------
@@ -63,19 +63,47 @@
 
 // LEDs
 // ----
-#define PIN_LED     (30u) // D30/PA27 + D31/PA28
+#define PIN_UART_PWR  (9u)
+#define PIN_UART_TX1  (10u)
+#define PIN_UART_RX1  (11u)
+#define PIN_UART_TX2  (12u)
+#define PIN_UART_RX2  (13u)
+#define PIN_I2C_PWR   (14u)
+#define PIN_XB1_PWR   (22u)
+#define PIN_XB1_CS    (23u)
+#define PIN_XB1_INT   (24u)
+#define PIN_XB1_TX    (25u)
+#define PIN_XB1_RX    (26u)
+#define PIN_XB2_PWR   (27u)
+#define PIN_XB2_CS    (28u)
+#define PIN_XB2_INT   (29u)
+#define PIN_XB2_TX    (30u)
+#define PIN_XB2_RX    (31u)
+#define PIN_RED_LED   (7u)
+#define PIN_GREEN_LED (8u)
+#define PIN_SWITCH    (0u)
+#define PIN_IO1       (1u)
+#define PIN_IO2       (2u)
+#define PIN_IO3       (3u)
+#define PIN_IO4       (4u)
+#define PIN_IO5       (5u)
+#define PIN_IO6       (6u)
+
+// LEDs
+// ----
+#define PIN_LED     (7u) // D7/PA27 + D8/PA28
 #define LED_BUILTIN PIN_LED
 
 // Analog pins
 // -----------
-#define PIN_A0   (15u)
-#define PIN_A1   (18u)
-#define PIN_A2   (19u)
-#define PIN_A3   (20u)
-#define PIN_A4   (21u)
-#define PIN_A5   (25u)
-#define PIN_A6   (15u)
-#define PIN_DAC0 (15u)
+#define PIN_A0   (6u)
+#define PIN_A1   (1u)
+#define PIN_A2   (2u)
+#define PIN_A3   (3u)
+#define PIN_A4   (4u)
+#define PIN_A5   (5u)
+#define PIN_A6   (6u)
+#define PIN_DAC0 (6u)
 
 static const uint8_t A0   = PIN_A0;
 static const uint8_t A1   = PIN_A1;
@@ -92,10 +120,10 @@ static const uint8_t DAC0 = PIN_DAC0;
 #define SPI_INTERFACES_COUNT 1
 
 // SPI
-#define PIN_SPI_MISO  (10u)
-#define PIN_SPI_MOSI  (8u)
-#define PIN_SPI_SCK   (9u)
-#define PIN_SPI_SS    (24u) // CS XB1
+#define PIN_SPI_MISO  (21u)
+#define PIN_SPI_MOSI  (19u)
+#define PIN_SPI_SCK   (20u)
+#define PIN_SPI_SS    (23u) // CS XB1
 #define PERIPH_SPI    sercom1 // sercom1 or sercom3
 #define PAD_SPI_TX    SPI_PAD_0_SCK_1
 #define PAD_SPI_RX    SERCOM_RX_PAD_3
@@ -109,15 +137,15 @@ static const uint8_t SCK  = PIN_SPI_SCK;
 #define WIRE_INTERFACES_COUNT 2
 
 // Wire
-#define PIN_WIRE_SDA        (11u)
-#define PIN_WIRE_SCL        (12u)
+#define PIN_WIRE_SDA        (15u)
+#define PIN_WIRE_SCL        (16u)
 #define PERIPH_WIRE         sercom0 // sercom0 or sercom2
 #define WIRE_IT_HANDLER     SERCOM0_Handler
 static const uint8_t SDA = PIN_WIRE_SDA;
 static const uint8_t SCL = PIN_WIRE_SCL;
 
-#define PIN_WIRE1_SDA       (26u) // IMU
-#define PIN_WIRE1_SCL       (27u) // IMU
+#define PIN_WIRE1_SDA       (17u) // IMU
+#define PIN_WIRE1_SCL       (18u) // IMU
 #define PERIPH_WIRE1        sercom2 // sercom2 or sercom4
 #define WIRE1_IT_HANDLER    SERCOM2_Handler
 static const uint8_t SDA1 = PIN_WIRE1_SDA;
@@ -125,22 +153,22 @@ static const uint8_t SCL1 = PIN_WIRE1_SCL;
 
 // USB
 // ---
-#define PIN_USB_DM          (22u)
-#define PIN_USB_DP          (23u)
+#define PIN_USB_DM          (32u)
+#define PIN_USB_DP          (33u)
 #define PIN_USB_HOST_ENABLE (-1u)
 
 // Needed for WINC1501B (WiFi101) library
 // --------------------------------------
-#define WINC1501_RESET_PIN   (-1) // no reset pin
-#define WINC1501_CHIP_EN_PIN (-1) // no enable pin
-#define WINC1501_INTN_PIN    (7)  // INT XB1
+#define WINC1501_RESET_PIN   (-1u) // no reset pin
+#define WINC1501_CHIP_EN_PIN (-1u) // no enable pin
+#define WINC1501_INTN_PIN    (24u)  // INT XB1
 #define WINC1501_SPI         SPI
-#define WINC1501_SPI_CS_PIN  (24) // CS XB1
+#define WINC1501_SPI_CS_PIN  (23u) // CS XB1
 //#define NO_HW_CHIP_EN        (1) // No Chip Enable Pin
 
 // Needed for SD library
 // ---------------------
-#define SDCARD_SS_PIN (28) // CS XB2
+#define SDCARD_SS_PIN       (28u) // CS XB2
 
 // Serial ports
 // ------------
@@ -158,30 +186,30 @@ extern SERCOM sercom5;
 
 // SERCOM3 oder SERCOM5 Serial1 UART RXTX1
 extern Uart Serial1;
-#define PIN_SERIAL1_RX (1u)
-#define PIN_SERIAL1_TX (0u)
+#define PIN_SERIAL1_RX (11u)
+#define PIN_SERIAL1_TX (10u)
 #define PAD_SERIAL1_TX (UART_TX_PAD_0)
 #define PAD_SERIAL1_RX (SERCOM_RX_PAD_1)
 
 // SERCOM4 Serial2 UART RXTX2
 extern Uart Serial2;
-#define PIN_SERIAL2_RX (33u)
-#define PIN_SERIAL2_TX (32u)
+#define PIN_SERIAL2_RX (13u)
+#define PIN_SERIAL2_TX (12u)
 #define PAD_SERIAL2_TX (UART_TX_PAD_0)
 #define PAD_SERIAL2_RX (SERCOM_RX_PAD_1)
 
 // SERCOM5 Serial3 XBEE1
 extern Uart Serial3;
-#define PIN_SERIAL3_RX (13u)
-#define PIN_SERIAL3_TX (14u)
+#define PIN_SERIAL3_RX (26u)
+#define PIN_SERIAL3_TX (25u)
 #define PAD_SERIAL3_TX (UART_TX_PAD_2)
 #define PAD_SERIAL3_RX (SERCOM_RX_PAD_3)
 
 // SERCOM0 oder SERCOM2 Serial4 XBEE2
 /*
 extern Uart Serial4;
-#define PIN_SERIAL4_RX (2u)
-#define PIN_SERIAL4_TX (3u)
+#define PIN_SERIAL4_RX (31u)
+#define PIN_SERIAL4_TX (30u)
 #define PAD_SERIAL4_TX (UART_TX_PAD_2)
 #define PAD_SERIAL4_RX (SERCOM_RX_PAD_3)
 */

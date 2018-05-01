@@ -1,30 +1,4 @@
 
-#define PIN_I2C_PWR   (5)
-#define PIN_UART_PWR  (16)
-#define PIN_UART_RX1  (1)
-#define PIN_UART_TX1  (0)
-#define PIN_UART_RX2  (33)
-#define PIN_UART_TX2  (32)
-#define PIN_XB1_PWR   (17)
-#define PIN_XB1_CS    (24)
-#define PIN_XB1_INT   (7)
-#define PIN_XB1_RX    (13)
-#define PIN_XB1_TX    (14)
-#define PIN_XB2_PWR   (4)
-#define PIN_XB2_CS    (28)
-#define PIN_XB2_INT   (29)
-#define PIN_XB2_RX    (3)
-#define PIN_XB2_TX    (2)
-#define PIN_RED_LED   (30)
-#define PIN_GREEN_LED (31)
-#define PIN_SWITCH    (6)
-#define PIN_IO1       (18)
-#define PIN_IO2       (19)
-#define PIN_IO3       (20)
-#define PIN_IO4       (21)
-#define PIN_IO5       (25)
-#define PIN_IO6       (15)
-
 #define I2C_ATECC  (0x60) // ATECC608A
 #define I2C_ACCEL  (0x18) // BMX055
 #define I2C_GYRO   (0x68) // BMX055
@@ -42,6 +16,7 @@ public:
     SPIselectNone();
     pinMode(PIN_RED_LED, OUTPUT);
     pinMode(PIN_GREEN_LED, OUTPUT);
+    pinMode(PIN_SWITCH, INPUT_PULLUP);
     statusNone();
     powerAll();
   }
