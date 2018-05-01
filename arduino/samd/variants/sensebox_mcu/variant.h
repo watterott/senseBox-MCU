@@ -96,7 +96,7 @@
 
 // Analog pins
 // -----------
-#define PIN_A0   (6u)
+#define PIN_A0   (1u)
 #define PIN_A1   (1u)
 #define PIN_A2   (2u)
 #define PIN_A3   (3u)

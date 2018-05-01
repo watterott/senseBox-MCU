@@ -187,6 +187,7 @@ void SERCOM2_Handler()
 }
 */
 
+
 void initVariant()
 {
   // set power pins as outputs
