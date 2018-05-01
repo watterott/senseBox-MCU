@@ -13,6 +13,8 @@ void setup()
   Serial.begin(9600);
   while(!Serial); // wait for serial monitor
   Serial.println("Test");
+
+  senseBoxIO.powerNone();
 }
 
 void loop()
