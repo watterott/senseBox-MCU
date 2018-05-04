@@ -18,6 +18,9 @@ public:
     pinMode(PIN_GREEN_LED, OUTPUT);
     pinMode(PIN_SWITCH, INPUT_PULLUP);
     statusNone();
+    #ifdef SB_DEFAULT_POWER_OFF
+      powerNone();
+    #endif
   }
 
   void statusNone(void)
@@ -107,6 +110,7 @@ public:
     }
     else // off
     {
+      digitalWrite(PIN_XB1_CS, HIGH);
       pinMode(PIN_XB1_INT, INPUT_PULLDOWN);
       pinMode(PIN_XB1_RX, INPUT_PULLDOWN);
       pinMode(PIN_XB1_TX, INPUT_PULLDOWN);
@@ -127,6 +131,7 @@ public:
     }
     else // off
     {
+      digitalWrite(PIN_XB2_CS, HIGH);
       pinMode(PIN_XB2_INT, INPUT_PULLDOWN);
       pinMode(PIN_XB2_RX, INPUT_PULLDOWN);
       pinMode(PIN_XB2_TX, INPUT_PULLDOWN);
