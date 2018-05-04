@@ -1,6 +1,12 @@
 
+# custom menu
+menu.power=Power
+
 # senseBox MCU (SAMD21)
 sb.name=senseBox MCU
+sb.menu.power.on=ON as Default
+sb.menu.power.off=OFF as Default
+sb.menu.power.off.build.extra_flags=-D__SAMD21G18A__ -DSB_DEFAULT_POWER_OFF {build.usb_flags}
 sb.vid.0=0x04D8
 sb.pid.0=0xEF66
 sb.vid.1=0x04D8

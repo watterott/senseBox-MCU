@@ -191,28 +191,31 @@ void SERCOM2_Handler()
 void initVariant()
 {
   // set power pins as outputs
-  PORT->Group[1].DIRSET.reg = PORT_PB02;
-  PORT->Group[1].OUTSET.reg = PORT_PB02; // high = UART Power on
-
-  PORT->Group[1].DIRSET.reg = PORT_PB11;
-  PORT->Group[1].OUTSET.reg = PORT_PB11; // high = I2C Power on
-
-  PORT->Group[1].DIRSET.reg = PORT_PB03;
-  PORT->Group[1].OUTCLR.reg = PORT_PB03; // low = XB1 Power on
-
-  PORT->Group[0].DIRSET.reg = PORT_PA18;
+  PORT->Group[1].DIRSET.reg = PORT_PB02; // UART Power
+  PORT->Group[1].DIRSET.reg = PORT_PB11; // I2C Power
+  PORT->Group[1].DIRSET.reg = PORT_PB03; // XB1 Power
+  PORT->Group[1].DIRSET.reg = PORT_PB10; // XB2 Power
+  PORT->Group[0].DIRSET.reg = PORT_PA18; // XB1 CS
   PORT->Group[0].OUTSET.reg = PORT_PA18; // high = XB1 CS off
-
-  PORT->Group[1].DIRSET.reg = PORT_PB10;
-  PORT->Group[1].OUTCLR.reg = PORT_PB10; // low = XB2 Power on
-
-  PORT->Group[0].DIRSET.reg = PORT_PA14;
+  PORT->Group[0].DIRSET.reg = PORT_PA14; // XB2 CS
   PORT->Group[0].OUTSET.reg = PORT_PA14; // high = XB2 CS off
+  
+  // set default state for power pins 
+#ifdef SB_DEFAULT_POWER_OFF
+  PORT->Group[1].OUTCLR.reg = PORT_PB02; // low = UART Power off
+  PORT->Group[1].OUTCLR.reg = PORT_PB11; // low = I2C Power off
+  PORT->Group[1].OUTSET.reg = PORT_PB03; // high = XB1 Power off
+  PORT->Group[1].OUTSET.reg = PORT_PB10; // high = XB2 Power off
+#else
+  PORT->Group[1].OUTSET.reg = PORT_PB02; // high = UART Power on
+  PORT->Group[1].OUTSET.reg = PORT_PB11; // high = I2C Power on
+  PORT->Group[1].OUTCLR.reg = PORT_PB03; // low = XB1 Power on
+  PORT->Group[1].OUTCLR.reg = PORT_PB10; // low = XB2 Power on
+#endif
 
   // set LED pins as outputs
-  PORT->Group[0].DIRSET.reg = PORT_PA27;
-  PORT->Group[0].OUTCLR.reg = PORT_PA27; // red LED off
-
-  PORT->Group[0].DIRSET.reg = PORT_PA28;
-  PORT->Group[0].OUTCLR.reg = PORT_PA28; // green LED off
+  PORT->Group[0].DIRSET.reg = PORT_PA27; // red LED
+  PORT->Group[0].OUTCLR.reg = PORT_PA27; // low = red LED off
+  PORT->Group[0].DIRSET.reg = PORT_PA28; // green LED
+  PORT->Group[0].OUTCLR.reg = PORT_PA28; // low = green LED off
 }

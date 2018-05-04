@@ -18,7 +18,6 @@ public:
     pinMode(PIN_GREEN_LED, OUTPUT);
     pinMode(PIN_SWITCH, INPUT_PULLUP);
     statusNone();
-    powerAll();
   }
 
   void statusNone(void)
