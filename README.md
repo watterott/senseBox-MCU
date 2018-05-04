@@ -7,4 +7,5 @@ senseBox MCU is a Microchip SAMD21 based open-source board for sensors.
 * USB CDC+MSC Bootloader (Arduino compatible)
 * XBee compatible sockets with UART and SPI
 * 5V tolerant IOs, UART, I2C
+* Idle Power Consumption about 20mA
 * **[Documentation on learn.watterott.com](http://learn.watterott.com/sensebox/)**
