@@ -11853,7 +11853,7 @@ red, green, blue -&gt; 0603</description>
 <part name="X3" library="we-symbol" deviceset="PASSER" device="-07"/>
 <part name="FRAME1" library="we-symbol" deviceset="FRAME-A4L" device=""/>
 <part name="LOGO3" library="we-symbol" deviceset="LOGO_OSHW" device="-3" value="OSHW_LOGOX0070"/>
-<part name="XB1" library="we-board" deviceset="XBEE" device="-SMDTP" value="XBEE-SMDTP"/>
+<part name="XBEE1" library="we-board" deviceset="XBEE" device="-SMDTP" value="XBEE-SMDTP"/>
 <part name="X4" library="we-symbol" deviceset="PASSER" device="-07"/>
 <part name="C20" library="we-rcl" deviceset="CAPACITOR" device="-0402" value="2u2"/>
 <part name="IC2" library="we-chip" deviceset="ATSAMD21G" device="18A-MU"/>
@@ -11915,7 +11915,7 @@ red, green, blue -&gt; 0603</description>
 <part name="R20" library="we-rcl" deviceset="RESISTOR" device="-0402" value="100k"/>
 <part name="C18" library="we-rcl" deviceset="CAPACITOR" device="-0805" value="22u"/>
 <part name="C16" library="we-rcl" deviceset="CAPACITOR" device="-0805" value="22u"/>
-<part name="XB2" library="we-board" deviceset="XBEE" device="-SMDTP" value="XBEE-SMDTP"/>
+<part name="XBEE2" library="we-board" deviceset="XBEE" device="-SMDTP" value="XBEE-SMDTP"/>
 <part name="C21" library="we-rcl" deviceset="CAPACITOR" device="-0402" value="2u2"/>
 <part name="C19" library="we-rcl" deviceset="CAPACITOR" device="-0805" value="22u"/>
 <part name="C17" library="we-rcl" deviceset="CAPACITOR" device="-0805" value="22u"/>
@@ -12878,7 +12878,7 @@ Designed by Watterott electronic for senseBox https://sensebox.de</text>
 <text x="33.02" y="165.1" size="5.08" layer="97" ratio="20" align="center">XBee Sockets</text>
 </plain>
 <instances>
-<instance part="XB1" gate="BOARD" x="107.95" y="115.57"/>
+<instance part="XBEE1" gate="BOARD" x="107.95" y="115.57"/>
 <instance part="C20" gate="C" x="80.01" y="107.95" smashed="yes" rot="R90">
 <attribute name="NAME" x="77.47" y="109.22" size="1.778" layer="95" align="bottom-center"/>
 <attribute name="VALUE" x="77.47" y="105.918" size="1.778" layer="96" align="top-center"/>
@@ -12891,7 +12891,7 @@ Designed by Watterott electronic for senseBox https://sensebox.de</text>
 <attribute name="NAME" x="67.31" y="109.22" size="1.778" layer="95" align="bottom-center"/>
 <attribute name="VALUE" x="67.31" y="106.172" size="1.778" layer="96" align="top-center"/>
 </instance>
-<instance part="XB2" gate="BOARD" x="107.95" y="41.91"/>
+<instance part="XBEE2" gate="BOARD" x="107.95" y="41.91"/>
 <instance part="C21" gate="C" x="80.01" y="34.29" smashed="yes" rot="R90">
 <attribute name="NAME" x="77.47" y="35.56" size="1.778" layer="95" align="bottom-center"/>
 <attribute name="VALUE" x="77.47" y="32.512" size="1.778" layer="96" align="top-center"/>
@@ -12984,7 +12984,7 @@ Designed by Watterott electronic for senseBox https://sensebox.de</text>
 <nets>
 <net name="GND" class="0">
 <segment>
-<pinref part="XB1" gate="BOARD" pin="GND"/>
+<pinref part="XBEE1" gate="BOARD" pin="GND"/>
 <pinref part="C20" gate="C" pin="1"/>
 <wire x1="85.09" y1="102.87" x2="80.01" y2="102.87" width="0.1524" layer="91"/>
 <pinref part="C18" gate="C" pin="1"/>
@@ -13000,7 +13000,7 @@ Designed by Watterott electronic for senseBox https://sensebox.de</text>
 <junction x="69.85" y="102.87"/>
 </segment>
 <segment>
-<pinref part="XB2" gate="BOARD" pin="GND"/>
+<pinref part="XBEE2" gate="BOARD" pin="GND"/>
 <pinref part="C21" gate="C" pin="1"/>
 <wire x1="85.09" y1="29.21" x2="80.01" y2="29.21" width="0.1524" layer="91"/>
 <pinref part="C19" gate="C" pin="1"/>
@@ -13054,7 +13054,7 @@ Designed by Watterott electronic for senseBox https://sensebox.de</text>
 </net>
 <net name="XB1_TX" class="0">
 <segment>
-<pinref part="XB1" gate="BOARD" pin="DOUT/TX"/>
+<pinref part="XBEE1" gate="BOARD" pin="DOUT/TX"/>
 <pinref part="R10" gate="R" pin="2"/>
 <wire x1="72.39" y1="123.19" x2="85.09" y2="123.19" width="0.1524" layer="91"/>
 </segment>
@@ -13063,7 +13063,7 @@ Designed by Watterott electronic for senseBox https://sensebox.de</text>
 <segment>
 <wire x1="146.05" y1="118.11" x2="133.35" y2="118.11" width="0.1524" layer="91"/>
 <label x="146.05" y="118.11" size="1.27" layer="95" xref="yes"/>
-<pinref part="XB1" gate="BOARD" pin="AD3/DIO3/SS"/>
+<pinref part="XBEE1" gate="BOARD" pin="AD3/DIO3/SS"/>
 <pinref part="R14" gate="R" pin="1"/>
 <wire x1="133.35" y1="118.11" x2="130.81" y2="118.11" width="0.1524" layer="91"/>
 <wire x1="133.35" y1="114.3" x2="133.35" y2="118.11" width="0.1524" layer="91"/>
@@ -13079,7 +13079,7 @@ Designed by Watterott electronic for senseBox https://sensebox.de</text>
 <segment>
 <wire x1="49.53" y1="118.11" x2="85.09" y2="118.11" width="0.1524" layer="91"/>
 <label x="49.53" y="118.11" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="XB1" gate="BOARD" pin="MISO/DIO12"/>
+<pinref part="XBEE1" gate="BOARD" pin="MISO/DIO12"/>
 </segment>
 <segment>
 <wire x1="85.09" y1="151.13" x2="95.25" y2="151.13" width="0.1524" layer="91"/>
@@ -13091,7 +13091,7 @@ Designed by Watterott electronic for senseBox https://sensebox.de</text>
 <segment>
 <wire x1="146.05" y1="102.87" x2="130.81" y2="102.87" width="0.1524" layer="91"/>
 <label x="146.05" y="102.87" size="1.27" layer="95" xref="yes"/>
-<pinref part="XB1" gate="BOARD" pin="DIO4/MOSI"/>
+<pinref part="XBEE1" gate="BOARD" pin="DIO4/MOSI"/>
 </segment>
 <segment>
 <wire x1="125.73" y1="156.21" x2="120.65" y2="156.21" width="0.1524" layer="91"/>
@@ -13103,7 +13103,7 @@ Designed by Watterott electronic for senseBox https://sensebox.de</text>
 <segment>
 <wire x1="146.05" y1="120.65" x2="130.81" y2="120.65" width="0.1524" layer="91"/>
 <label x="146.05" y="120.65" size="1.27" layer="95" xref="yes"/>
-<pinref part="XB1" gate="BOARD" pin="AD2/DIO2/SCK"/>
+<pinref part="XBEE1" gate="BOARD" pin="AD2/DIO2/SCK"/>
 </segment>
 <segment>
 <wire x1="125.73" y1="153.67" x2="120.65" y2="153.67" width="0.1524" layer="91"/>
@@ -13114,7 +13114,7 @@ Designed by Watterott electronic for senseBox https://sensebox.de</text>
 <net name="XBEE1_CTS/IRQ" class="0">
 <segment>
 <wire x1="133.35" y1="105.41" x2="130.81" y2="105.41" width="0.1524" layer="91"/>
-<pinref part="XB1" gate="BOARD" pin="DIO7/CTS"/>
+<pinref part="XBEE1" gate="BOARD" pin="DIO7/CTS"/>
 <pinref part="R15" gate="R" pin="1"/>
 </segment>
 </net>
@@ -13156,7 +13156,7 @@ Designed by Watterott electronic for senseBox https://sensebox.de</text>
 </net>
 <net name="XB1_VCC" class="0">
 <segment>
-<pinref part="XB1" gate="BOARD" pin="VCC"/>
+<pinref part="XBEE1" gate="BOARD" pin="VCC"/>
 <label x="49.53" y="125.73" size="1.27" layer="95" rot="R180" xref="yes"/>
 <wire x1="85.09" y1="125.73" x2="80.01" y2="125.73" width="0.1524" layer="91"/>
 <wire x1="80.01" y1="125.73" x2="49.53" y2="125.73" width="0.1524" layer="91"/>
@@ -13202,14 +13202,14 @@ Designed by Watterott electronic for senseBox https://sensebox.de</text>
 </net>
 <net name="XB1_RX" class="0">
 <segment>
-<pinref part="XB1" gate="BOARD" pin="DIN/RX/!CFG!"/>
+<pinref part="XBEE1" gate="BOARD" pin="DIN/RX/!CFG!"/>
 <pinref part="R8" gate="R" pin="2"/>
 <wire x1="85.09" y1="120.65" x2="62.23" y2="120.65" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="XB2_VCC" class="0">
 <segment>
-<pinref part="XB2" gate="BOARD" pin="VCC"/>
+<pinref part="XBEE2" gate="BOARD" pin="VCC"/>
 <label x="49.53" y="52.07" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="C17" gate="C" pin="2"/>
 <pinref part="C19" gate="C" pin="2"/>
@@ -13254,14 +13254,14 @@ Designed by Watterott electronic for senseBox https://sensebox.de</text>
 </net>
 <net name="XB2_TX" class="0">
 <segment>
-<pinref part="XB2" gate="BOARD" pin="DOUT/TX"/>
+<pinref part="XBEE2" gate="BOARD" pin="DOUT/TX"/>
 <pinref part="R11" gate="R" pin="2"/>
 <wire x1="72.39" y1="49.53" x2="85.09" y2="49.53" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="XB2_RX" class="0">
 <segment>
-<pinref part="XB2" gate="BOARD" pin="DIN/RX/!CFG!"/>
+<pinref part="XBEE2" gate="BOARD" pin="DIN/RX/!CFG!"/>
 <pinref part="R9" gate="R" pin="2"/>
 <wire x1="62.23" y1="46.99" x2="85.09" y2="46.99" width="0.1524" layer="91"/>
 </segment>
@@ -13270,7 +13270,7 @@ Designed by Watterott electronic for senseBox https://sensebox.de</text>
 <segment>
 <wire x1="49.53" y1="44.45" x2="85.09" y2="44.45" width="0.1524" layer="91"/>
 <label x="49.53" y="44.45" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="XB2" gate="BOARD" pin="MISO/DIO12"/>
+<pinref part="XBEE2" gate="BOARD" pin="MISO/DIO12"/>
 </segment>
 <segment>
 <wire x1="85.09" y1="85.09" x2="95.25" y2="85.09" width="0.1524" layer="91"/>
@@ -13282,7 +13282,7 @@ Designed by Watterott electronic for senseBox https://sensebox.de</text>
 <segment>
 <wire x1="146.05" y1="46.99" x2="130.81" y2="46.99" width="0.1524" layer="91"/>
 <label x="146.05" y="46.99" size="1.27" layer="95" xref="yes"/>
-<pinref part="XB2" gate="BOARD" pin="AD2/DIO2/SCK"/>
+<pinref part="XBEE2" gate="BOARD" pin="AD2/DIO2/SCK"/>
 </segment>
 <segment>
 <wire x1="125.73" y1="80.01" x2="120.65" y2="80.01" width="0.1524" layer="91"/>
@@ -13294,7 +13294,7 @@ Designed by Watterott electronic for senseBox https://sensebox.de</text>
 <segment>
 <wire x1="146.05" y1="44.45" x2="133.35" y2="44.45" width="0.1524" layer="91"/>
 <label x="146.05" y="44.45" size="1.27" layer="95" xref="yes"/>
-<pinref part="XB2" gate="BOARD" pin="AD3/DIO3/SS"/>
+<pinref part="XBEE2" gate="BOARD" pin="AD3/DIO3/SS"/>
 <pinref part="R16" gate="R" pin="1"/>
 <wire x1="133.35" y1="44.45" x2="130.81" y2="44.45" width="0.1524" layer="91"/>
 <wire x1="133.35" y1="44.45" x2="133.35" y2="40.64" width="0.1524" layer="91"/>
@@ -13309,7 +13309,7 @@ Designed by Watterott electronic for senseBox https://sensebox.de</text>
 <net name="XBEE2_CTS/IRQ" class="0">
 <segment>
 <wire x1="133.35" y1="31.75" x2="130.81" y2="31.75" width="0.1524" layer="91"/>
-<pinref part="XB2" gate="BOARD" pin="DIO7/CTS"/>
+<pinref part="XBEE2" gate="BOARD" pin="DIO7/CTS"/>
 <pinref part="R17" gate="R" pin="1"/>
 </segment>
 </net>
@@ -13317,7 +13317,7 @@ Designed by Watterott electronic for senseBox https://sensebox.de</text>
 <segment>
 <wire x1="146.05" y1="29.21" x2="130.81" y2="29.21" width="0.1524" layer="91"/>
 <label x="146.05" y="29.21" size="1.27" layer="95" xref="yes"/>
-<pinref part="XB2" gate="BOARD" pin="DIO4/MOSI"/>
+<pinref part="XBEE2" gate="BOARD" pin="DIO4/MOSI"/>
 </segment>
 <segment>
 <wire x1="125.73" y1="82.55" x2="120.65" y2="82.55" width="0.1524" layer="91"/>
@@ -13445,7 +13445,7 @@ Designed by Watterott electronic for senseBox https://sensebox.de</text>
 </net>
 <net name="RST_XB1" class="0">
 <segment>
-<pinref part="XB1" gate="BOARD" pin="!RESET!"/>
+<pinref part="XBEE1" gate="BOARD" pin="!RESET!"/>
 <pinref part="IC4" gate="IC" pin="RST"/>
 <wire x1="85.09" y1="115.57" x2="62.23" y2="115.57" width="0.1524" layer="91"/>
 <wire x1="62.23" y1="115.57" x2="62.23" y2="105.41" width="0.1524" layer="91"/>
@@ -13453,7 +13453,7 @@ Designed by Watterott electronic for senseBox https://sensebox.de</text>
 </net>
 <net name="RST_XB2" class="0">
 <segment>
-<pinref part="XB2" gate="BOARD" pin="!RESET!"/>
+<pinref part="XBEE2" gate="BOARD" pin="!RESET!"/>
 <pinref part="IC3" gate="IC" pin="RST"/>
 <wire x1="85.09" y1="41.91" x2="60.96" y2="41.91" width="0.1524" layer="91"/>
 <wire x1="60.96" y1="41.91" x2="60.96" y2="31.75" width="0.1524" layer="91"/>

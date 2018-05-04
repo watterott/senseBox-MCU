@@ -5381,7 +5381,7 @@ K - 260gr Red&lt;br&gt;
 <element name="X1" library="we-symbol" package="PASSER_07MM" value="PASSER-07" x="2" y="2" smashed="yes"/>
 <element name="X3" library="we-symbol" package="PASSER_07MM" value="PASSER-07" x="84" y="64" smashed="yes"/>
 <element name="LOGO3" library="we-symbol" package="OSHW_3MM" value="OSHW_LOGOX0070" x="27.25" y="25.5" smashed="yes"/>
-<element name="XB1" library="we-board" package="XBEE_SMD_TP" value="XBEE-SMDTP" x="14" y="21" smashed="yes" rot="R90">
+<element name="XBEE1" library="we-board" package="XBEE_SMD_TP" value="XBEE-SMDTP" x="14" y="21" smashed="yes" rot="R90">
 <attribute name="NAME" x="16" y="21" size="1.4" layer="21" font="vector" ratio="14" rot="SR90" align="center"/>
 <attribute name="VALUE" x="15.27" y="21" size="0.8128" layer="27" font="vector" ratio="10" rot="R270" align="center"/>
 </element>
@@ -5542,7 +5542,7 @@ K - 260gr Red&lt;br&gt;
 <attribute name="NAME" x="20.4285" y="10.821" size="0.8128" layer="25" font="vector" ratio="10" rot="R90" align="center"/>
 <attribute name="VALUE" x="19.4125" y="14.25" size="0.8128" layer="27" font="vector" ratio="10" rot="R90" align="center"/>
 </element>
-<element name="XB2" library="we-board" package="XBEE_SMD_TP" value="XBEE-SMDTP" x="72" y="21" smashed="yes" rot="R270">
+<element name="XBEE2" library="we-board" package="XBEE_SMD_TP" value="XBEE-SMDTP" x="72" y="21" smashed="yes" rot="R270">
 <attribute name="NAME" x="70" y="21" size="1.4" layer="21" font="vector" ratio="14" rot="SR270" align="center"/>
 <attribute name="VALUE" x="70.73" y="21" size="0.8128" layer="27" font="vector" ratio="10" rot="R90" align="center"/>
 </element>
@@ -5899,7 +5899,7 @@ K - 260gr Red&lt;br&gt;
 <vertex x="4" y="9"/>
 <vertex x="0" y="5"/>
 </polygon>
-<contactref element="XB1" pad="10"/>
+<contactref element="XBEE1" pad="10"/>
 <contactref element="IC2" pad="TP"/>
 <contactref element="IC2" pad="18"/>
 <contactref element="IC2" pad="42"/>
@@ -5927,7 +5927,7 @@ K - 260gr Red&lt;br&gt;
 <contactref element="IC1" pad="1"/>
 <contactref element="C7" pad="1"/>
 <contactref element="C3" pad="1"/>
-<contactref element="XB2" pad="10"/>
+<contactref element="XBEE2" pad="10"/>
 <contactref element="C20" pad="1"/>
 <contactref element="C18" pad="1"/>
 <contactref element="C16" pad="1"/>
@@ -7041,7 +7041,7 @@ K - 260gr Red&lt;br&gt;
 <wire x1="50.25" y1="31.625" x2="50.25" y2="32.875" width="0.2032" layer="16"/>
 </signal>
 <signal name="XB1_VCC">
-<contactref element="XB1" pad="1"/>
+<contactref element="XBEE1" pad="1"/>
 <contactref element="C20" pad="2"/>
 <contactref element="C18" pad="2"/>
 <contactref element="C16" pad="2"/>
@@ -7094,7 +7094,7 @@ K - 260gr Red&lt;br&gt;
 <wire x1="32.75" y1="8.125" x2="25.375" y2="15.5" width="0.2032" layer="16"/>
 </signal>
 <signal name="XB1_TX">
-<contactref element="XB1" pad="2"/>
+<contactref element="XBEE1" pad="2"/>
 <contactref element="R10" pad="2"/>
 <wire x1="7" y1="11.5" x2="8" y2="11.5" width="0.2032" layer="1"/>
 <via x="8" y="11.5" extent="1-16" drill="0.3"/>
@@ -7110,7 +7110,7 @@ K - 260gr Red&lt;br&gt;
 <wire x1="20.25" y1="23.375" x2="21.5" y2="23.375" width="0.2032" layer="1"/>
 </signal>
 <signal name="XB1_MISO">
-<contactref element="XB1" pad="4"/>
+<contactref element="XBEE1" pad="4"/>
 <contactref element="IC5" pad="8"/>
 <via x="57" y="12.75" extent="1-16" drill="0.3"/>
 <via x="12" y="11.5" extent="1-16" drill="0.3"/>
@@ -7128,7 +7128,7 @@ K - 260gr Red&lt;br&gt;
 <wire x1="56.625" y1="13.125" x2="57" y2="12.75" width="0.2032" layer="1"/>
 </signal>
 <signal name="XB1_RX">
-<contactref element="XB1" pad="3"/>
+<contactref element="XBEE1" pad="3"/>
 <contactref element="R8" pad="2"/>
 <wire x1="9" y1="8.5" x2="10.5" y2="8.5" width="0.2032" layer="1"/>
 <wire x1="10.5" y1="8.5" x2="13.5" y2="11.5" width="0.2032" layer="1"/>
@@ -7137,7 +7137,7 @@ K - 260gr Red&lt;br&gt;
 <wire x1="13.5" y1="17.25" x2="13.5" y2="11.5" width="0.2032" layer="1"/>
 </signal>
 <signal name="XB1_CS">
-<contactref element="XB1" pad="17"/>
+<contactref element="XBEE1" pad="17"/>
 <contactref element="IC5" pad="18"/>
 <contactref element="R14" pad="1"/>
 <wire x1="23.875" y1="26.875" x2="25" y2="25.75" width="0.2032" layer="1"/>
@@ -7166,7 +7166,7 @@ K - 260gr Red&lt;br&gt;
 <wire x1="11" y1="30" x2="11" y2="33.5" width="0.2032" layer="1"/>
 </signal>
 <signal name="XB1_MOSI">
-<contactref element="XB1" pad="11"/>
+<contactref element="XBEE1" pad="11"/>
 <contactref element="IC5" pad="16"/>
 <wire x1="26" y1="27.5" x2="34.5" y2="27.5" width="0.2032" layer="1"/>
 <wire x1="34.5" y1="27.5" x2="34.625" y2="27.625" width="0.2032" layer="1"/>
@@ -7191,7 +7191,7 @@ K - 260gr Red&lt;br&gt;
 <wire x1="23" y1="30.5" x2="26" y2="27.5" width="0.2032" layer="1"/>
 </signal>
 <signal name="XB1_SCK">
-<contactref element="XB1" pad="18"/>
+<contactref element="XBEE1" pad="18"/>
 <contactref element="IC5" pad="14"/>
 <wire x1="25.375" y1="26.375" x2="35.875" y2="26.375" width="0.2032" layer="1"/>
 <via x="35.875" y="26.375" extent="1-16" drill="0.3"/>
@@ -7223,14 +7223,14 @@ K - 260gr Red&lt;br&gt;
 <via x="14" y="28.375" extent="1-16" drill="0.3"/>
 </signal>
 <signal name="XBEE1_CTS/IRQ">
-<contactref element="XB1" pad="12"/>
+<contactref element="XBEE1" pad="12"/>
 <contactref element="R15" pad="1"/>
 <wire x1="21" y1="30.5" x2="21" y2="29.375" width="0.2032" layer="1"/>
 <wire x1="21" y1="29.375" x2="21.875" y2="28.5" width="0.2032" layer="1"/>
 <wire x1="21.875" y1="28.5" x2="22.375" y2="28.5" width="0.2032" layer="1"/>
 </signal>
 <signal name="XB2_VCC">
-<contactref element="XB2" pad="1"/>
+<contactref element="XBEE2" pad="1"/>
 <contactref element="C17" pad="2"/>
 <contactref element="C19" pad="2"/>
 <contactref element="C21" pad="2"/>
@@ -7270,7 +7270,7 @@ K - 260gr Red&lt;br&gt;
 <wire x1="68" y1="14.5" x2="69" y2="13.5" width="0.2032" layer="16"/>
 </signal>
 <signal name="XB2_TX">
-<contactref element="XB2" pad="2"/>
+<contactref element="XBEE2" pad="2"/>
 <contactref element="R11" pad="2"/>
 <wire x1="79" y1="30.5" x2="78" y2="30.5" width="0.2032" layer="1"/>
 <via x="78" y="30.5" extent="1-16" drill="0.3"/>
@@ -7282,7 +7282,7 @@ K - 260gr Red&lt;br&gt;
 <wire x1="69.75" y1="17.5" x2="64" y2="17.5" width="0.2032" layer="1"/>
 </signal>
 <signal name="XB2_RX">
-<contactref element="XB2" pad="3"/>
+<contactref element="XBEE2" pad="3"/>
 <contactref element="R9" pad="2"/>
 <wire x1="77" y1="33.5" x2="76" y2="33.5" width="0.2032" layer="1"/>
 <via x="76" y="33.5" extent="1-16" drill="0.3"/>
@@ -7296,7 +7296,7 @@ K - 260gr Red&lt;br&gt;
 <via x="71" y="17.625" extent="1-16" drill="0.3"/>
 </signal>
 <signal name="XB2_MISO">
-<contactref element="XB2" pad="4"/>
+<contactref element="XBEE2" pad="4"/>
 <contactref element="IC5" pad="11"/>
 <wire x1="75" y1="30.5" x2="74.5" y2="30.5" width="0.2032" layer="1"/>
 <wire x1="74.5" y1="30.5" x2="64.125" y2="20.125" width="0.2032" layer="1"/>
@@ -7305,7 +7305,7 @@ K - 260gr Red&lt;br&gt;
 <wire x1="58" y1="20.125" x2="64.125" y2="20.125" width="0.2032" layer="1"/>
 </signal>
 <signal name="XB2_SCK">
-<contactref element="XB2" pad="18"/>
+<contactref element="XBEE2" pad="18"/>
 <contactref element="IC5" pad="5"/>
 <wire x1="77" y1="11.5" x2="77" y2="9" width="0.2032" layer="1"/>
 <wire x1="77" y1="11.5" x2="77" y2="7.375" width="0.2032" layer="1"/>
@@ -7315,7 +7315,7 @@ K - 260gr Red&lt;br&gt;
 <wire x1="54.675" y1="11.825" x2="60" y2="6.5" width="0.2032" layer="1"/>
 </signal>
 <signal name="XB2_CS">
-<contactref element="XB2" pad="17"/>
+<contactref element="XBEE2" pad="17"/>
 <contactref element="R16" pad="1"/>
 <contactref element="IC5" pad="3"/>
 <via x="56" y="7.75" extent="1-16" drill="0.3"/>
@@ -7333,14 +7333,14 @@ K - 260gr Red&lt;br&gt;
 <wire x1="75" y1="12" x2="75" y2="10" width="0.2032" layer="1"/>
 </signal>
 <signal name="XBEE2_CTS/IRQ">
-<contactref element="XB2" pad="12"/>
+<contactref element="XBEE2" pad="12"/>
 <contactref element="R17" pad="1"/>
 <wire x1="65" y1="11.5" x2="65" y2="12.875" width="0.2032" layer="1"/>
 <wire x1="65" y1="12.875" x2="64.375" y2="13.5" width="0.2032" layer="1"/>
 <wire x1="64.375" y1="13.5" x2="64" y2="13.5" width="0.2032" layer="1"/>
 </signal>
 <signal name="XB2_MOSI">
-<contactref element="XB2" pad="11"/>
+<contactref element="XBEE2" pad="11"/>
 <contactref element="IC5" pad="7"/>
 <wire x1="55.975" y1="14" x2="55.975" y2="12.65" width="0.2032" layer="1"/>
 <wire x1="55.975" y1="12.65" x2="56.625" y2="12" width="0.2032" layer="1"/>
@@ -7716,13 +7716,13 @@ K - 260gr Red&lt;br&gt;
 <wire x1="51.875" y1="14.875" x2="51.375" y2="14.875" width="0.2032" layer="1"/>
 </signal>
 <signal name="RST_XB1">
-<contactref element="XB1" pad="5"/>
+<contactref element="XBEE1" pad="5"/>
 <contactref element="IC4" pad="2"/>
 <wire x1="13" y1="8.5" x2="13" y2="6.6" width="0.2032" layer="1"/>
 <wire x1="13" y1="6.6" x2="12.725" y2="6.325" width="0.2032" layer="1"/>
 </signal>
 <signal name="RST_XB2">
-<contactref element="XB2" pad="5"/>
+<contactref element="XBEE2" pad="5"/>
 <contactref element="IC3" pad="2"/>
 <wire x1="68.9" y1="36.05" x2="69.075" y2="36.05" width="0.2032" layer="1"/>
 <wire x1="69.075" y1="36.05" x2="69.5" y2="35.625" width="0.2032" layer="1"/>
