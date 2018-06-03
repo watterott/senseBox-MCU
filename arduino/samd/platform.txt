@@ -1,8 +1,8 @@
 
-# SenseBox SAMD Core and Platform
+# senseBox SAMD Core and Platform
 # --------------------------------
 
-name=senseBox SAMD Boards (ARM Cortex-M0+)
+name=senseBox SAMD Boards
 version=1.0.0
 
 # BOSSA

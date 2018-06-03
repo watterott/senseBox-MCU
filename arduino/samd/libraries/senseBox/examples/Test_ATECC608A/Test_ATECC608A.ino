@@ -107,11 +107,11 @@ void setup()
   // read config zone
   byte buf[64]; // buffer
 
-	buf[0] = 5+2; // length: data + 2 crc bytes
-	buf[1] = ECC_READ; // cmd
-	buf[2] = ECC_ZONE_CFG|ECC_ZONE_CNT_FLAG; // param 1
-	buf[3] = 0x00; // addr lsb
-	buf[4] = 0x00; // addr msb
+  buf[0] = 5+2; // length: data + 2 crc bytes
+  buf[1] = ECC_READ; // cmd
+  buf[2] = ECC_ZONE_CFG|ECC_ZONE_CNT_FLAG; // param 1
+  buf[3] = 0x00; // addr lsb
+  buf[4] = 0x00; // addr msb
   //buf[5] = 0x00; // crc
   //buf[6] = 0x00; // crc
   calc_crc(buf, buf[0]-2, &buf[5]); // calc crc

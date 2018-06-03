@@ -61,8 +61,8 @@
  */
 // #define digitalPinToTimer(P)
 
-// LEDs
-// ----
+// senseBox MCU pins
+// -----------------
 #define PIN_UART_PWR  (9u)
 #define PIN_UART_TX1  (10u)
 #define PIN_UART_RX1  (11u)
