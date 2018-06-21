@@ -28,7 +28,8 @@ A binary file can be generated and exported in the Arduino IDE with *Sketch->Exp
 
 ### Windows
 Sometimes the driver for the USB Bootloader is not loaded correctly.
-Check the driver state in the Device Manager, when the Bootloader is active (double press reset).
+Check the driver state in the Device Manager, when the Bootloader is active (double press reset button).
+If the driver is not loaded correctly then uninstall it via the Device Manager and dis-/reconnect the board and select the driver INF file, if Windows asks for it.
 * [senseBox MCU Driver](https://github.com/watterott/senseBox-MCU/raw/master/arduino/driver.zip) (not needed for Win10)
 
 ### Linux
