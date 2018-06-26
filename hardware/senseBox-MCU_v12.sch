@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -12066,6 +12066,7 @@ Designed by Watterott electronic for senseBox https://sensebox.de</text>
 <text x="53.34" y="165.1" size="5.08" layer="97" ratio="20" align="center">USB</text>
 <text x="170.18" y="165.1" size="5.08" layer="97" ratio="20" align="center">SAMD21</text>
 <text x="81.28" y="33.02" size="5.08" layer="97" ratio="20" align="center">Power</text>
+<text x="21.59" y="25.4" size="2.54" layer="97" ratio="20" align="center">Input: 4.5-5.5V</text>
 </plain>
 <instances>
 <instance part="X2" gate="X" x="168.91" y="11.43"/>
@@ -12191,7 +12192,7 @@ Designed by Watterott electronic for senseBox https://sensebox.de</text>
 <attribute name="NAME" x="124.46" y="15.24" size="1.778" layer="95" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="127" y="10.16" size="1.778" layer="96" align="top-center"/>
 </instance>
-<instance part="J2" gate="J" x="27.94" y="13.97" rot="MR180"/>
+<instance part="J2" gate="J" x="17.78" y="13.97" rot="MR180"/>
 <instance part="R4" gate="R" x="52.07" y="58.42"/>
 <instance part="GND5" gate="1" x="69.85" y="55.88" smashed="yes">
 <attribute name="VALUE" x="67.31" y="53.34" size="1.778" layer="96"/>
@@ -12285,7 +12286,7 @@ Designed by Watterott electronic for senseBox https://sensebox.de</text>
 <junction x="81.28" y="11.43"/>
 <pinref part="C2" gate="C" pin="1"/>
 <pinref part="C9" gate="C" pin="1"/>
-<wire x1="73.66" y1="11.43" x2="35.56" y2="11.43" width="0.1524" layer="91"/>
+<wire x1="73.66" y1="11.43" x2="25.4" y2="11.43" width="0.1524" layer="91"/>
 <pinref part="D4" gate="D" pin="A"/>
 <wire x1="73.66" y1="11.43" x2="73.66" y2="12.7" width="0.1524" layer="91"/>
 <junction x="73.66" y="11.43"/>
@@ -12294,7 +12295,7 @@ Designed by Watterott electronic for senseBox https://sensebox.de</text>
 <wire x1="134.62" y1="11.43" x2="134.62" y2="12.7" width="0.1524" layer="91"/>
 <junction x="127" y="11.43"/>
 <pinref part="J2" gate="J" pin="2"/>
-<wire x1="35.56" y1="11.43" x2="35.56" y2="13.97" width="0.1524" layer="91"/>
+<wire x1="25.4" y1="11.43" x2="25.4" y2="13.97" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C12" gate="C" pin="1"/>
@@ -12863,8 +12864,8 @@ Designed by Watterott electronic for senseBox https://sensebox.de</text>
 <segment>
 <pinref part="D1" gate="D" pin="A"/>
 <pinref part="J2" gate="J" pin="1"/>
-<wire x1="48.26" y1="19.05" x2="35.56" y2="19.05" width="0.1524" layer="91"/>
-<wire x1="35.56" y1="19.05" x2="35.56" y2="16.51" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="19.05" x2="25.4" y2="19.05" width="0.1524" layer="91"/>
+<wire x1="25.4" y1="19.05" x2="25.4" y2="16.51" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
