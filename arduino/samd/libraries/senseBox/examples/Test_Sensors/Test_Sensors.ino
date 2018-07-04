@@ -53,23 +53,23 @@ enum SSD1306MemoryMode
 static const uint8_t oled128x64[] =
 {
   SSD1306_DISPLAYOFF,                // display off (sleep mode)
-  SSD1306_NORMALDISPLAY,             // display normal
-  SSD1306_DEACTIVATESCROLL,          // deativate scroll
-  SSD1306_COMSCANDEC,                // scan from 127 to 0 (Reverse scan)
-  SSD1306_SETSTARTLINE | 0x00,       // first line to start scanning from
-  SSD1306_SETCONTRAST, 0x7F,         // contast value to 0x7F according to datasheet
-  SSD1306_SEGREMAP | 0x01,           // use reverse mapping. 0x00 - is normal mapping 
-  SSD1306_SETMULTIPLEX, 63,          // reset to default MUX
-  SSD1306_SETDISPLAYOFFSET, 0x00,    // no offset
-  SSD1306_SETDISPLAYCLOCKDIV, 0x80,  // set to default ratio/osc frequency
-  SSD1306_SETPRECHARGE, 0x22,        // switch precharge to 0x22 // 0xF1
-  SSD1306_SETCOMPINS, 0x12,          // set divide ratio
-  SSD1306_SETVCOMDETECT, 0x20,       // vcom deselect to 0x20 // 0x40
-  SSD1306_CHARGEPUMP, 0x14,          // enable charge pump
-  SSD1306_MEMORYMODE, HOR_ADDR_MODE, // page addressing mode
-  SSD1306_SETPAGE | 0x00,            // set page start address
   SSD1306_SETLOWCOLUMN | 0x00,       // set low column start address
   SSD1306_SETHIGHCOLUMN | 0x00,      // set high column address
+  SSD1306_SETSTARTLINE | 0x00,       // first line to start scanning from
+  SSD1306_SETCONTRAST, 0xCF,         // contast value
+  SSD1306_COMSCANDEC,                // scan from 127 to 0 (Reverse scan)
+  SSD1306_SEGREMAP | 0x01,           // use reverse mapping. 0x00 is normal mapping 
+  SSD1306_SETMULTIPLEX, 0x3F,        // reset to default MUX
+  SSD1306_SETDISPLAYOFFSET, 0x00,    // no offset
+  SSD1306_SETDISPLAYCLOCKDIV, 0x80,  // set to default ratio/osc frequency
+  SSD1306_SETPRECHARGE, 0xF1,        // switch precharge 0x22 = ext. VCC, 0xF1 = int. DC/DC
+  SSD1306_SETCOMPINS, 0x12,          // set divide ratio
+  SSD1306_SETVCOMDETECT, 0x40,       // vcom deselect to 0x40
+  SSD1306_CHARGEPUMP, 0x14,          // enable charge pump 0x10 = ext. VCC, 0x14 = int. DC/DC
+  SSD1306_MEMORYMODE, HOR_ADDR_MODE, // page addressing mode
+  SSD1306_SETPAGE | 0x00,            // set page start address
+  SSD1306_NORMALDISPLAY,             // display normal
+  SSD1306_DEACTIVATESCROLL,          // deativate scroll
   SSD1306_DISPLAYALLON_RESUME,       // display RAM contents
   SSD1306_DISPLAYON,                 // display on
 };
