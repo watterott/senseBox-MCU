@@ -6,12 +6,15 @@
 
 #include <SPI.h>
 #include <Ethernet2.h>
+#include <EthernetClient.h>
+#include <Dns.h>
 #include <senseBoxIO.h>
 
 byte mac[] = {0xDE,0xAD,0xBE,0xEF,0xFE,0xED};
 IPAddress ip(192,168,1,177);
-IPAddress ip2(0,0,0,0);
-EthernetServer server(80); // webserver on port 80
+EthernetServer server(80); // local webserver on port 80
+EthernetClient client; // remote client
+#define website_for_test "www.sensebox.de"
 
 void setup()
 {
@@ -20,7 +23,7 @@ void setup()
   while(!Serial); // wait for serial monitor
   Serial.println("Test W5500");
 
-  // W5500 (LAN-Bee in XBEE1 Socket
+  // W5500 (LAN-Bee) in XBEE1 Socket
   senseBoxIO.powerXB1(false); // power off to reset W5500
   delay(250);
   senseBoxIO.powerXB1(true);  // power on
@@ -30,6 +33,7 @@ void setup()
   Ethernet.begin(mac, ip); // W5500.setIPAddress(ip);
 
   // get IP
+  IPAddress ip2(0,0,0,0);
   ip2 = Ethernet.localIP(); // W5500.getIPAddress(ip2);
   if((ip[0] != ip2[0]) || \
      (ip[1] != ip2[1]) || \
@@ -42,9 +46,44 @@ void setup()
   }
   Serial.println("OK - Detected");
 
-  // print IP
+  // try DHCP
+  if(Ethernet.begin(mac) == 0)
+  {
+    Ethernet.begin(mac, ip);
+  }
+
+  // print device IP
+  ip = Ethernet.localIP();
   Serial.print("IP: ");
-  Serial.println(ip2);
+  Serial.println(ip);
+
+  // test DNS
+  DNSClient dns;
+  IPAddress remote_ip;
+  dns.begin(Ethernet.dnsServerIP());
+  if(dns.getHostByName(website_for_test, remote_ip) == 1)
+  {
+    Serial.print("DNS Test OK - "website_for_test" = ");
+    Serial.println(ip);
+  }
+
+  // test remote connection
+  if(client.connect(website_for_test, 80))
+  {
+    Serial.println("Remote Connection OK - "website_for_test);
+    client.println("GET / HTTP/1.0");
+    client.println("Host: "website_for_test);
+    client.println("Connection: close");
+    client.println();
+    delay(2000); //wait 2s
+    //show response
+    while(client.available())
+    {
+      char c = client.read();
+      Serial.write(c);
+    }
+  }
+  client.stop();
 
   // status green
   senseBoxIO.statusGreen();
