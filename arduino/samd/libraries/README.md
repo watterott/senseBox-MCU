@@ -6,3 +6,4 @@
 * [Adafruit_BMP280](https://github.com/adafruit/Adafruit_BMP280_Library)
 * [Adafruit_BME280](https://github.com/adafruit/Adafruit_BME280_Library)
 * [Adafruit_BME680](https://github.com/adafruit/Adafruit_BME680)
+* [Adafruit_HDC1000](https://github.com/adafruit/Adafruit_HDC1000_Library)
