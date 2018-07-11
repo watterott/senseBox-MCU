@@ -5,7 +5,7 @@
 */
 
 int buttonPin = 0;  // button pin 0
-int ledPin = 7; // LED pin, on-board LED 7 or 8
+int ledPin = LED_BUILTIN; // LED pin, on-board LED 7 or 8
 
 // the setup function runs once when you press reset or power the board
 void setup()

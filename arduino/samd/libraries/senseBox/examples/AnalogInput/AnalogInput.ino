@@ -5,8 +5,8 @@
   by analogRead().
 */
 
-int sensorPin = 1;    // analog input pin 1-6
-int ledPin = 7;       // LED pin, on-board LED 7 or 8
+int sensorPin = 1;        // analog input pin 1-6
+int ledPin = LED_BUILTIN; // LED pin, on-board LED 7 or 8
 
 // the setup function runs once when you press reset or power the board
 void setup()

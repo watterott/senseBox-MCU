@@ -85,6 +85,10 @@ void setup()
   }
   client.stop();
 
+  // start local webserver
+  Serial.println("Starting Webserver...");
+  server.begin();
+
   // status green
   senseBoxIO.statusGreen();
 }
