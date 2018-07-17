@@ -14,7 +14,7 @@ Then open the Arduino Boards Manager (*Tools->Boards->Boards Manager*) and insta
 
 ## Bootloader
 
-The bootloader can be activated via the Arduino IDE or by doing two reset in 0.5s (double pressing reset switch).
+The bootloader can be activated via the Arduino IDE or by doing two reset in 0.5s (double pressing the reset button next to the status LEDs).
 
 When the bootloader is active then a new program can be loaded via the Arduino IDE and the serial port or via the mass storage device.
 For the mass storage device just copy a new binary file (.bin) to the drive.
