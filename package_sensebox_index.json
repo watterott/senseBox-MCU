@@ -2,10 +2,10 @@
   "packages": [
     {
       "name": "sensebox",
-      "maintainer": "senseBox",
+      "maintainer": "Watterott electronic",
       "websiteURL": "http://www.sensebox.de",
       "email": "",
-      "help": {"online": "http://www.sensebox.de"},
+      "help": {"online": "https://github.com/watterott/senseBox-MCU"},
 
       "platforms": [
         {
