@@ -173,7 +173,7 @@ void check_sensor(byte address)
       Wire.endTransmission();
       Wire.requestFrom((uint8_t)address, (uint8_t)2);
       delay(1);
-      u |= (Wire.read()<<8);
+      u |= (Wire.read()<<0);
       u |= (Wire.read()<<8);
       l = u * 4;
       Serial.print("Lux ");
@@ -334,7 +334,7 @@ void loop()
       Serial.println(address, HEX);
       check_sensor(address);
     }
-    else if(error==4)
+    else if(error == 4)
     {
       Serial.print("\nUnknow error at 0x");
       Serial.println(address, HEX);
