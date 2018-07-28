@@ -103,14 +103,14 @@ public:
     if(on)
     {
       digitalWrite(PIN_XB1_PWR, LOW); // inverted
-      pinMode(PIN_XB1_INT, INPUT_PULLDOWN);
+      pinMode(PIN_XB1_INT, INPUT_PULLUP); // pull-up
       pinMode(PIN_XB1_RX, INPUT_PULLUP);
       pinMode(PIN_XB1_TX, OUTPUT);
       delay(500); // wait 500ms (MAX809 reset circuit)
     }
     else // off
     {
-      digitalWrite(PIN_XB1_CS, HIGH);
+      digitalWrite(PIN_XB1_CS, HIGH); // deactivate
       pinMode(PIN_XB1_INT, INPUT_PULLDOWN);
       pinMode(PIN_XB1_RX, INPUT_PULLDOWN);
       pinMode(PIN_XB1_TX, INPUT_PULLDOWN);
@@ -124,14 +124,14 @@ public:
     if(on)
     {
       digitalWrite(PIN_XB2_PWR, LOW); // inverted
-      pinMode(PIN_XB2_INT, INPUT_PULLDOWN);
+      pinMode(PIN_XB2_INT, INPUT_PULLUP); // pull-up
       pinMode(PIN_XB2_RX, INPUT_PULLUP);
       pinMode(PIN_XB2_TX, OUTPUT);
       delay(500); // wait 500ms (MAX809 reset circuit)
     }
     else // off
     {
-      digitalWrite(PIN_XB2_CS, HIGH);
+      digitalWrite(PIN_XB2_CS, HIGH); // deactivate
       pinMode(PIN_XB2_INT, INPUT_PULLDOWN);
       pinMode(PIN_XB2_RX, INPUT_PULLDOWN);
       pinMode(PIN_XB2_TX, INPUT_PULLDOWN);
