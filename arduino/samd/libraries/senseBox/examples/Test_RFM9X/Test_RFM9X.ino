@@ -7,23 +7,6 @@
 #include <SPI.h>
 #include <senseBoxIO.h>
 
-byte transfer(byte addr, byte value)
-{
-  byte ret;
-
-  digitalWrite(PIN_XB1_CS, LOW);
-  SPI.transfer(addr);
-  ret = SPI.transfer(value);
-  digitalWrite(PIN_XB1_CS, HIGH);
-
-  return ret;
-}
-
-byte readReg(byte addr)
-{
-  return transfer(addr & 0x7f, 0x00);
-}
-
 void setup()
 {
   // init serial library
@@ -35,6 +18,7 @@ void setup()
   senseBoxIO.powerXB1(false); // power off to reset RFM9X
   delay(250);
   senseBoxIO.powerXB1(true);  // power on
+  pinMode(PIN_XB1_INT, INPUT_PULLDOWN); // pull-down because interrupt is high-active 
   
   // init SPI
   SPI.begin();
@@ -42,21 +26,24 @@ void setup()
   SPI.setBitOrder(MSBFIRST);
   SPI.setClockDivider(SPI_CLOCK_DIV128);
 
-  // check version
-  byte i = readReg(0x42); // 0x42 = version
-  if(i != 0x12)
-  {
-    Serial.println("Error - Not Found");
-    senseBoxIO.statusRed();
-    return; // don't continue
-  }
-  Serial.println("OK - Detected");
-
+  // read version
+  digitalWrite(PIN_XB1_CS, LOW);
+  SPI.transfer(0x42); // 0x42 = version
+  byte i = SPI.transfer(0x00); // get value
+  digitalWrite(PIN_XB1_CS, HIGH);
+  
   // shutdown RFM9X
   senseBoxIO.powerXB1(false);
 
-  // status green
-  senseBoxIO.statusGreen();
+  // check version
+  if(i != 0x12)
+  {
+    Serial.println("Error - Not Found");
+    senseBoxIO.statusRed(); // status red
+    return; // don't continue
+  }
+  Serial.println("OK - Detected");
+  senseBoxIO.statusGreen(); // status green
 }
 
 void loop()

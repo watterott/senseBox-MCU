@@ -27,7 +27,7 @@ void setup()
   if(WiFi.status() == WL_NO_SHIELD)
   {
     Serial.println("Error - Not Found");
-    senseBoxIO.statusRed();
+    senseBoxIO.statusRed(); // status red
     // shutdown WINC1500
     WiFi.end();
     senseBoxIO.powerXB1(false);
@@ -37,7 +37,6 @@ void setup()
 
   // print firmware version
   String fv = WiFi.firmwareVersion();
-  String latestFv;
   Serial.print("Firmware installed: ");
   Serial.println(fv);
   Serial.print("Latest firmware: ");

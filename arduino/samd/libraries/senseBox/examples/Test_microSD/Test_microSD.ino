@@ -48,7 +48,8 @@ void setup()
   if(!volume.init(card))
   {
     Serial.println("Error - Not Found FAT16/FAT32 Partition");
-    senseBoxIO.statusRed();
+    senseBoxIO.statusRed(); // status red
+    senseBoxIO.powerXB2(false); // shutdown microSD
     return; // don't continue
   }
 
