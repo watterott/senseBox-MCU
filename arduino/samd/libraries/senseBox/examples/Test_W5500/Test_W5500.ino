@@ -5,7 +5,7 @@
 */
 
 #include <SPI.h>
-#include <Ethernet2.h>
+#include <Ethernet.h>
 #include <EthernetClient.h>
 #include <Dns.h>
 #include <senseBoxIO.h>
