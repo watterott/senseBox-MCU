@@ -1,7 +1,7 @@
 /*
   Test WINC1500
 
-  Test progam for Microchip WINC1500 (WiFi-Bee), connected to XBEE1 (SPI).
+  Test progam for WINC1500 (WiFi-Bee), connected to XBEE1 (SPI).
 */
 
 #include <SPI.h>

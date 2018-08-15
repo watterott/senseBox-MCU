@@ -14,7 +14,7 @@ byte mac[] = {0xDE,0xAD,0xBE,0xEF,0xFE,0xED};
 IPAddress ip(192,168,1,177);
 EthernetServer server(80); // local webserver on port 80
 EthernetClient client; // remote client
-#define website_for_test "www.sensebox.de"
+#define website_for_test "www.sensebox.de" // website used for connection test
 
 void setup()
 {

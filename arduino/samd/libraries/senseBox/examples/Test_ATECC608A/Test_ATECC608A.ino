@@ -5,6 +5,7 @@
 */
 
 #include <Wire.h>
+#include <ArduinoECCX08.h>
 #include <senseBoxIO.h>
 
 // I2C commands/registers
@@ -99,6 +100,23 @@ void setup()
 
   // init I2C/Wire library
   Wire1.begin();
+
+  // test ArduinoECCX08 lib
+  /*
+  ECCX08Class ecc(Wire1, 0x60);
+  if(ecc.begin())
+  {
+    if(ecc.locked())
+    {
+      Serial.print("Random: ");
+      Serial.println(ecc.random(65535)); // random(max)
+    }
+    else
+    {
+      Serial.println("not locked");
+    }
+  }
+  */
 
   // init ATECC
   write(CMD_RESET, 0x00); // reset

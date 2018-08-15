@@ -10,6 +10,7 @@
 #include <Adafruit_BME280.h>
 #include <Adafruit_BME680.h>
 #include <Adafruit_HDC1000.h>
+#include <ArduinoECCX08.h>
 #include <senseBoxIO.h>
 
 enum SSD1306Commands
@@ -149,6 +150,7 @@ void check_sensor(byte address)
   Adafruit_BME280 bme280;
   Adafruit_BME680 bme680;
   Adafruit_HDC1000 hdc;
+  ECCX08Class ecc(Wire, 0x60);
 
   if((address == 0) || (address > 127))
   {
@@ -303,7 +305,19 @@ void check_sensor(byte address)
       break;
 
     case 0x60:  //ATECCx08
-      Serial.println("--- ATECCx08");
+      if(ecc.begin())
+      {
+        Serial.println("--- ATECCx08");
+        if(ecc.locked())
+        {
+          Serial.print("Random nr ");
+          Serial.println(ecc.random(65535)); //random(max)
+        }
+        else
+        {
+          Serial.println("not locked");
+        }
+      }
       break;
 
     case 0x68:  //RV8523
