@@ -161,9 +161,9 @@ static const uint8_t SCL1 = PIN_WIRE1_SCL;
 // --------------------------------------
 #define WINC1501_RESET_PIN   (-1u) // no reset pin
 #define WINC1501_CHIP_EN_PIN (-1u) // no enable pin
-#define WINC1501_INTN_PIN    (24u)  // INT XB1
+#define WINC1501_INTN_PIN    (24u) // 24 = INT XB1, 29 = INT XB2
 #define WINC1501_SPI         SPI
-#define WINC1501_SPI_CS_PIN  (23u) // CS XB1
+#define WINC1501_SPI_CS_PIN  (23u) // 23 = CS XB1, 28 = CS XB2
 //#define NO_HW_CHIP_EN        (1) // No Chip Enable Pin
 
 // Needed for SD library
