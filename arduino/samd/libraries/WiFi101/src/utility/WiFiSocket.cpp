@@ -66,7 +66,7 @@ SOCKET WiFiSocketClass::create(uint16 u16Domain, uint8 u8Type, uint8 u8Flags)
 {
 	SOCKET sock = socket(u16Domain, u8Type, u8Flags);
 
-	if (sock > 0) {
+	if (sock >= 0) {
 		_info[sock].state = SOCKET_STATE_IDLE;
 		_info[sock].parent = -1;
 	}
@@ -319,7 +319,7 @@ sint16 WiFiSocketClass::sendto(SOCKET sock, void *pvSendBuffer, uint16 u16SendLe
 	m2m_wifi_handle_events(NULL);
 
 	if (_info[sock].state != SOCKET_STATE_BOUND) {
-		return 0;
+		return -1;
 	}
 
 	return ::sendto(sock, pvSendBuffer, u16SendLength, flags, pstrDestAddr, u8AddrLen);
