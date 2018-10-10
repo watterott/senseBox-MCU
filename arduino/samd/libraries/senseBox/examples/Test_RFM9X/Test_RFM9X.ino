@@ -18,7 +18,7 @@ void setup()
   senseBoxIO.powerXB1(false); // power off to reset RFM9X
   delay(250);
   senseBoxIO.powerXB1(true);  // power on
-  pinMode(PIN_XB1_INT, INPUT_PULLDOWN); // pull-down because interrupt is high-active 
+  pinMode(PIN_XB1_INT, INPUT_PULLDOWN); // pull-down because interrupt is high-active
   
   // init SPI
   SPI.begin();
