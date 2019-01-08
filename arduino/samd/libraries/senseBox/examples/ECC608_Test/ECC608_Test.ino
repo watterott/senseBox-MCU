@@ -1,5 +1,5 @@
 /*
-  Test ATECC608A
+  ECC608 Test
 
   Test progam for Microchip ATECC608A, connected to Wire1 (I2C).
 */
@@ -96,7 +96,7 @@ void setup()
   // init serial library
   Serial.begin(9600);
   while(!Serial); // wait for serial monitor
-  Serial.println("Test ATECC608A");
+  Serial.println("ECC608");
 
   // init I2C/Wire library
   Wire1.begin();

@@ -1,5 +1,5 @@
 /*
-  Test microSD 
+  microSD Test
 
   Test progam for microSD card (mSD-Bee), connected to XBEE2 (SPI).
 */
@@ -18,7 +18,7 @@ void setup()
   // init serial library
   Serial.begin(9600);
   while(!Serial); // wait for serial monitor
-  Serial.println("Test microSD");
+  Serial.println("microSD");
 
   // microSD in XBEE2 Socket
   senseBoxIO.powerXB2(false); // power off to reset microSD

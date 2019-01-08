@@ -1,5 +1,5 @@
 /*
-  Test BMX055
+  BMX055 Test
 
   Test progam for Bosch BMX055, connected to Wire1 (I2C).
 */
@@ -34,7 +34,7 @@ void setup()
   // init serial library
   Serial.begin(9600);
   while(!Serial); // wait for serial monitor
-  Serial.println("Test BMX055");
+  Serial.println("BMX055");
 
   // init I2C/Wire library
   Wire1.begin();

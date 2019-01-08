@@ -1,5 +1,5 @@
 /*
-  Test SSL
+  SSL/TLS Test
 
   Test progam for SSL. WINC1500 (WiFi-Bee) or W5500 (LAN-Bee) connected to XBEE1 (SPI).
 */
@@ -76,7 +76,7 @@ void setup()
   // init serial library
   Serial.begin(9600);
   while(!Serial); // wait for serial monitor
-  Serial.println("Test SSL");
+  Serial.println("SSL/TLS Test");
 
   // XBEE1 Socket
   senseBoxIO.powerXB1(false); // power off to reset

@@ -1,5 +1,5 @@
 /*
-  Test TTN with RFM9X
+  RFM9X TTN Test 
 
   Test progam for TTN and RFM9X (LoRa-Bee), connected to XBEE1 (SPI).
 */
@@ -134,7 +134,7 @@ void setup()
   // init serial library
   Serial.begin(9600);
   while(!Serial); // wait for serial monitor
-  Serial.println("Test TTN");
+  Serial.println("RFM9X TTN");
 
   // RFM9X (LoRa-Bee) in XBEE1 Socket
   senseBoxIO.powerXB1(false); // power off to reset RFM9X

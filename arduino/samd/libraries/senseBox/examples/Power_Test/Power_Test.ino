@@ -1,5 +1,5 @@
 /*
-  Test Power
+  Power Test
 
   Test progam for power settings and status LEDs.
 */

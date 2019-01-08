@@ -1,93 +1,68 @@
 /*
-  Test W5500
+  WINC1500 Test
 
-  Test progam for W5500 (LAN-Bee), connected to XBEE1 (SPI).
+  Test progam for WINC1500 (WiFi-Bee), connected to XBEE1 (SPI).
 */
 
 #include <SPI.h>
-#include <Ethernet.h>
-#include <EthernetClient.h>
-#include <Dns.h>
+#include <WiFi101.h>
+#include <driver/source/nmasic.h>
 #include <senseBoxIO.h>
 
-byte mac[] = {0xDE,0xAD,0xBE,0xEF,0xFE,0xED};
-IPAddress ip(192,168,1,177);
-EthernetServer server(80); // local webserver on port 80
-EthernetClient client; // remote client
-#define website_for_test "www.sensebox.de" // website used for connection test
+WiFiServer server(80); // local webserver on port 80
 
 void setup()
 {
   // init serial library
   Serial.begin(9600);
   while(!Serial); // wait for serial monitor
-  Serial.println("Test W5500");
+  Serial.println("WINC1500");
 
-  // W5500 (LAN-Bee) in XBEE1 Socket
-  senseBoxIO.powerXB1(false); // power off to reset W5500
+  // WINC1500 (WiFi-Bee) in XBEE1 Socket
+  senseBoxIO.powerXB1(false); // power off to reset WINC1500
   delay(250);
   senseBoxIO.powerXB1(true);  // power on
-  Ethernet.init(PIN_XB1_CS);
 
-  // set IP
-  Ethernet.begin(mac, ip); // W5500.setIPAddress(ip);
-
-  // get IP
-  IPAddress ip2(0,0,0,0);
-  ip2 = Ethernet.localIP(); // W5500.getIPAddress(ip2);
-  if((ip[0] != ip2[0]) || \
-     (ip[1] != ip2[1]) || \
-     (ip[2] != ip2[2]) || \
-     (ip[3] != ip2[3]))
+  // init WINC1500
+  if(WiFi.status() == WL_NO_SHIELD)
   {
     Serial.println("Error - Not Found");
-    senseBoxIO.statusRed();
+    senseBoxIO.statusRed(); // status red
+    // shutdown WINC1500
+    WiFi.end();
+    senseBoxIO.powerXB1(false);
     return; // don't continue
   }
   Serial.println("OK - Detected");
 
-  // try DHCP
-  if(Ethernet.begin(mac) == 0)
-  {
-    Ethernet.begin(mac, ip);
-  }
+  // print firmware version
+  String fv = WiFi.firmwareVersion();
+  Serial.print("Firmware installed: ");
+  Serial.println(fv);
+  Serial.print("Latest firmware: ");
+  Serial.println(WIFI_FIRMWARE_LATEST_MODEL_B); //WIFI_FIRMWARE_LATEST_MODEL_B WIFI_FIRMWARE_LATEST_MODEL_A
 
-  // print device IP
-  ip = Ethernet.localIP();
-  Serial.print("IP: ");
-  Serial.println(ip);
-
-  // test DNS
-  DNSClient dns;
-  IPAddress remote_ip;
-  dns.begin(Ethernet.dnsServerIP());
-  if(dns.getHostByName(website_for_test, remote_ip) == 1)
+  // create AP
+  Serial.println("Creating access point 'Test-AP'");
+  int status = WiFi.beginAP("Test-AP");
+  if(status != WL_AP_LISTENING)
   {
-    Serial.print("DNS Test OK - "website_for_test" = ");
-    Serial.println(ip);
+    Serial.println("Error");
+    senseBoxIO.statusRed();
+    // shutdown WINC1500
+    WiFi.end();
+    senseBoxIO.powerXB1(false);
+    return; // don't continue
   }
-
-  // test remote connection
-  if(client.connect(website_for_test, 80))
-  {
-    Serial.println("Remote Connection OK - "website_for_test);
-    client.println("GET / HTTP/1.0");
-    client.println("Host: "website_for_test);
-    client.println("Connection: close");
-    client.println();
-    delay(2000); //wait 2s
-    //show response
-    while(client.available())
-    {
-      char c = client.read();
-      Serial.write(c);
-    }
-  }
-  client.stop();
 
   // start local webserver
   Serial.println("Starting Webserver...");
   server.begin();
+
+  // print device IP
+  IPAddress ip = WiFi.localIP();
+  Serial.print("IP: ");
+  Serial.println(ip);
 
   // status green
   senseBoxIO.statusGreen();
@@ -96,7 +71,7 @@ void setup()
 void loop()
 {
   // listen for incoming clients
-  EthernetClient client = server.available();
+  WiFiClient client = server.available();
   if(client)
   {
     Serial.println("new client");

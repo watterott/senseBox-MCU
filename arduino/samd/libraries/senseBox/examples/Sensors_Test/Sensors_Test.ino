@@ -1,5 +1,5 @@
 /*
-  Test Sensors
+  Sensors Test
 
   Test progam for different I2C sensors, connected to Wire (I2C).
 */
@@ -132,7 +132,7 @@ void setup()
   // init serial library
   Serial.begin(9600);
   while(!Serial); // wait for serial monitor
-  Serial.println("Test Sensors");
+  Serial.println("Sensors");
 
   // power on I2C ports
   senseBoxIO.powerI2C(true);
