@@ -5,6 +5,7 @@
 * [Arduino BearSSL](https://github.com/arduino-libraries/ArduinoBearSSL)
 * [Adafruit Sensor](https://github.com/adafruit/Adafruit_Sensor)
 * [Adafruit BMP280](https://github.com/adafruit/Adafruit_BMP280_Library)
+* [Adafruit BMP3XX](https://github.com/adafruit/Adafruit_BMP3XX)
 * [Adafruit BME280](https://github.com/adafruit/Adafruit_BME280_Library)
 * [Adafruit BME680](https://github.com/adafruit/Adafruit_BME680)
 * [Adafruit HDC1000](https://github.com/adafruit/Adafruit_HDC1000_Library)
