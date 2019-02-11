@@ -17,18 +17,33 @@
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#ifndef _ECCX08_CSR_H_
-#define _ECCX08_CSR_H_
+#ifndef _ECCX08_SELF_SIGNED_CERT_H_
+#define _ECCX08_SELF_SIGNED_CERT_H_
 
 #include <Arduino.h>
 
-class ECCX08CSRClass {
+class ECCX08SelfSignedCertClass {
 public:
-  ECCX08CSRClass();
-  virtual ~ECCX08CSRClass();
+  ECCX08SelfSignedCertClass();
+  virtual ~ECCX08SelfSignedCertClass();
 
-  int begin(int slot, bool newPrivateKey = true);
-  String end();
+  int beginStorage(int keySlot, int dateAndSignatureSlot, bool newKey);
+  String endStorage();
+
+  int beginReconstruction(int keySlot, int dateAndSignatureSlot);
+  int endReconstruction();
+
+  uint8_t* bytes();
+  int length();
+
+  String sha1();
+
+  void setIssueYear(int issueYear);
+  void setIssueMonth(int issueMonth);
+  void setIssueDay(int issueDay);
+  void setIssueHour(int issueHour);
+  void setExpireYears(int expireYears);
+  void setSerialNumber(const uint8_t serialNumber[], int length);
 
   void setCountryName(const char *countryName);
   void setCountryName(const String& countryName) { setCountryName(countryName.c_str()); }
@@ -49,7 +64,14 @@ public:
   void setCommonName(const String& commonName) { setCommonName(commonName.c_str()); }
 
 private:
-  int _slot;
+  int buildCert(bool buildSignature);
+
+  int certInfoLength();
+  void appendCertInfo(uint8_t publicKey[], uint8_t buffer[], int length);
+
+private:
+  int _keySlot;
+  int _dateAndSignatureSlot;
 
   String _countryName;
   String _stateProvinceName;
@@ -58,9 +80,14 @@ private:
   String _organizationalUnitName;
   String _commonName;
 
-  byte _publicKey[64];
+  uint8_t _temp[72];
+  const uint8_t* _serialNumber;
+  int _serialNumberLength;
+
+  uint8_t* _bytes;
+  int _length;
 };
 
-extern ECCX08CSRClass ECCX08CSR;
+extern ECCX08SelfSignedCertClass ECCX08SelfSignedCert;
 
 #endif
