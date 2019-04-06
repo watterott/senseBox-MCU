@@ -56,6 +56,9 @@ int ECCX08Class::begin()
 
 void ECCX08Class::end()
 {
+  // First wake up the device otherwise the chip didn't react to a sleep commando
+  wakeup();
+  sleep();
 #ifdef WIRE_HAS_END
   _wire->end();
 #endif
@@ -148,7 +151,7 @@ int ECCX08Class::random(byte data[], size_t length)
       return 0;
     }
 
-    int copyLength = min(32, length);
+    int copyLength = min(32, (int)length);
     memcpy(data, response, copyLength);
 
     length -= copyLength;
