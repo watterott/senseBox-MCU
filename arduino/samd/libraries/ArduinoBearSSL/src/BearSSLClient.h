@@ -25,6 +25,10 @@
 #ifndef _BEAR_SSL_CLIENT_H_
 #define _BEAR_SSL_CLIENT_H_
 
+#ifndef BEAR_SSL_CLIENT_IOBUF_SIZE
+#define BEAR_SSL_CLIENT_IOBUF_SIZE 8192 + 85 + 325
+#endif
+
 #include <Arduino.h>
 #include <Client.h>
 
@@ -34,6 +38,7 @@ class BearSSLClient : public Client {
 
 public:
   BearSSLClient(Client& client);
+  BearSSLClient(Client& client, const br_x509_trust_anchor* myTAs, int myNumTAs);
   virtual ~BearSSLClient();
 
   virtual int connect(IPAddress ip, uint16_t port);
@@ -54,6 +59,8 @@ public:
   void setEccSlot(int ecc508KeySlot, const byte cert[], int certLength);
   void setEccSlot(int ecc508KeySlot, const char cert[]);
 
+  int errorCode();
+
 private:
   int connectSSL(const char* host);
   static int clientRead(void *ctx, unsigned char *buf, size_t len);
@@ -61,14 +68,17 @@ private:
   static void clientAppendCert(void *ctx, const void *data, size_t len);
 
 private:
-  Client* _client;  
+  Client* _client;
+  const br_x509_trust_anchor* _TAs;
+  int _numTAs;
+
   br_ec_private_key _ecKey;
   br_x509_certificate _ecCert;
   bool _ecCertDynamic;
 
   br_ssl_client_context _sc;
   br_x509_minimal_context _xc;
-  unsigned char _iobuf[8192 + 85 + 325];
+  unsigned char _iobuf[BEAR_SSL_CLIENT_IOBUF_SIZE];
   br_sslio_context _ioc;
 };
 
