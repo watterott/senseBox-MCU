@@ -28,6 +28,7 @@
 
 // Frequency of the board main oscillator
 #define VARIANT_MAINOSC (32768ul)
+//#define CRYSTALLESS //do not use ext. crystal
 
 // Master clock frequency
 #define VARIANT_MCK     (48000000ul)
@@ -91,8 +92,10 @@
 
 // LEDs
 // ----
-#define PIN_LED     (7u) // D7/PA27 + D8/PA28
-#define LED_BUILTIN PIN_LED
+#define PIN_LED      (7u) // D7/PA27 (red)
+#define PIN_LED2     (8u) // D8/PA28 (green)
+#define LED_BUILTIN  PIN_LED
+#define LED_BUILTIN2 PIN_LED2
 
 // Analog pins
 // -----------
