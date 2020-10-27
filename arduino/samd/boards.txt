@@ -6,7 +6,7 @@ menu.power=Power
 sb.name=senseBox MCU
 sb.menu.power.on=ON as Default
 sb.menu.power.off=OFF as Default
-sb.menu.power.off.build.extra_flags=-D__SAMD21G18A__ -DSB_DEFAULT_POWER_OFF {build.usb_flags}
+sb.menu.power.off.build.extra_flags=-D__SAMD21G18A__ -DCRYPTO_WIRE=Wire1 -DSB_DEFAULT_POWER_OFF {build.usb_flags}
 sb.vid.0=0x04D8
 sb.pid.0=0xEF66
 sb.vid.1=0x04D8
@@ -24,7 +24,7 @@ sb.build.f_cpu=48000000L
 sb.build.board=SAMD_MKR1000
 sb.build.variant=sensebox_mcu
 sb.build.core=arduino:arduino
-sb.build.extra_flags=-D__SAMD21G18A__ {build.usb_flags}
+sb.build.extra_flags=-D__SAMD21G18A__ -DCRYPTO_WIRE=Wire1 {build.usb_flags}
 sb.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld
 sb.build.openocdscript=openocd_scripts/sensebox_mcu.cfg
 sb.build.vid=0x04D8

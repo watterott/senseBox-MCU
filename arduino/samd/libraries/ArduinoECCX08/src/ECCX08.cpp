@@ -774,5 +774,8 @@ uint16_t ECCX08Class::crc16(const byte data[], size_t length)
   return crc;
 }
 
-//ECCX08Class ECCX08(Wire, 0x60);
-ECCX08Class ECCX08(Wire1, 0x60);
+#ifdef CRYPTO_WIRE
+ECCX08Class ECCX08(CRYPTO_WIRE, 0x60);
+#else
+ECCX08Class ECCX08(Wire, 0x60);
+#endif
