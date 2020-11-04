@@ -1,5 +1,5 @@
 
-#define I2C_ATECC  (0x60) // ATECC608A
+#define I2C_ATECC  (0x60) // ATECC608
 #define I2C_ACCEL  (0x18) // BMX055
 #define I2C_GYRO   (0x68) // BMX055
 #define I2C_MAGNET (0x12) // BMX055

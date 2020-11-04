@@ -1,7 +1,7 @@
 /*
   ECC608 Test
 
-  Test progam for Microchip ATECC608A, connected to Wire1 (I2C).
+  Test progam for Microchip ATECC608, connected to Wire1 (I2C).
 */
 
 #include <Wire.h>
