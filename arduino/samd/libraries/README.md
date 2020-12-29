@@ -10,3 +10,4 @@
 * [Adafruit BME680](https://github.com/adafruit/Adafruit_BME680)
 * [Adafruit HDC1000](https://github.com/adafruit/Adafruit_HDC1000_Library)
 * [Matthijs Kooijman LMIC (RFM9X)](https://github.com/matthijskooijman/arduino-lmic)
+* [SparkFun SCD30](https://github.com/sparkfun/SparkFun_SCD30_Arduino_Library)
