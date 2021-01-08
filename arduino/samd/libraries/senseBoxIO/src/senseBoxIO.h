@@ -20,6 +20,8 @@ public:
     statusNone();
     #ifdef SB_DEFAULT_POWER_OFF
       powerNone();
+    #else
+      powerAll();
     #endif
   }
 

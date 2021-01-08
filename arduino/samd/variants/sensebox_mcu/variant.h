@@ -217,9 +217,15 @@ extern Uart Serial4;
 #define PAD_SERIAL4_RX (SERCOM_RX_PAD_3)
 */
 
-
-
 #endif // __cplusplus
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+unsigned int PINCOUNT_fn();
+#ifdef __cplusplus
+}
+#endif
 
 // These serial port names are intended to allow libraries and architecture-neutral
 // sketches to automatically default to the correct port name for a particular type
