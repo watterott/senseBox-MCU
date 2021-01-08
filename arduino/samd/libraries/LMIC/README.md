@@ -1,3 +1,18 @@
+> :warning: This repository is no longer maintained. The recommended
+> alternative is the [MCCI version of LMIC][MCCI], which is based on
+> this one, but has seen much improvements over the years, has much
+> better documentation and is mostly a drop-in replacement. If you need
+> support for the SX126x, you can consider [Lacuna's port of
+> BasicMAC][BasicMAC], which is based on a parallel development based on
+> the original LMIC. Only when you have very tight constraints on RAM or
+> flash should this version still be considered.
+>
+> See [this post][Announcement] for more details and background.
+
+[MCCI]: https://github.com/mcci-catena/arduino-lmic
+[BasicMAC]: https://github.com/LacunaSpace/basicmac
+[Announcement]: https://github.com/matthijskooijman/arduino-lmic/issues/297
+
 Arduino-LMIC library
 ====================
 This repository contains the IBM LMIC (LoraMAC-in-C) library, slightly
@@ -338,6 +353,30 @@ RC oscillator using the transceiver's clkout. However, that datasheet is
 a bit vague on the RC oscillator's accuracy and how to use it exactly
 (some registers seem to be FSK-mode only), so this needs some
 experiments.
+
+The code can currently compensate for an inaccurate clock, by calling
+the `LMIC_setClockError()` function somewhere during setup. You can pass
+a clock error percentage, e.g. to correct for 1% clock error:
+
+    LMIC_setClockError(MAX_CLOCK_ERROR * 1 / 100);
+
+Problems with downlink and OTAA
+-------------------------------
+Uplink will often work right away, but sometimes downlink (and thus also
+OTAA) will not work directly. In practice, this is often due to
+inaccuracies in the receive window timing (see the previous section for
+details). If you run into problems with OTAA or downlink, it is a good
+idea to relax the RX mode timings to see if that helps by adding this to
+your setup somewhere:
+
+    LMIC_setClockError(MAX_CLOCK_ERROR * 10 / 100);
+
+This function is intended to compensate for clock inaccuracy (up to ±10%
+in this example), but that also works to compensate for inaccuracies due
+to software delays. The downside of this compensation is a longer
+receive window, which means a higher battery drain. So if this helps,
+you might want to try to lower the percentage (i.e. lower the 10 in the
+above call), often 1% works well already.
 
 Downlink datarate
 -----------------
