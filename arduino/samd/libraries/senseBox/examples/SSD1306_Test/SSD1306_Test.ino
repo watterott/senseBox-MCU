@@ -33,6 +33,7 @@ void loop()
   counter++;
 
   display.clearDisplay();
+  display.setTextColor(WHITE, BLACK);
   display.setTextSize(2);
   display.setCursor(0,0);
   display.print(counter);
