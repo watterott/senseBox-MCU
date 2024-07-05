@@ -24,7 +24,10 @@ void setup()
 
   //init display
   delay(500); //wait 500ms for display startup
-  display.begin(SSD1306_SWITCHCAPVCC, 0x3D);
+  display.begin(SSD1306_SWITCHCAPVCC, 0x3D); //0x3D or 0x3C
+  display.clearDisplay();
+  display.setTextSize(2);
+  display.setTextColor(WHITE);
 }
 
 // the loop function runs over and over again forever
@@ -33,8 +36,6 @@ void loop()
   counter++;
 
   display.clearDisplay();
-  display.setTextColor(WHITE, BLACK);
-  display.setTextSize(2);
   display.setCursor(0,0);
   display.print(counter);
   display.display();
