@@ -17,7 +17,7 @@ void setup()
   // RFM9X (LoRa-Bee) in XBEE1 Socket
   senseBoxIO.powerXB1(false); // power off to reset RFM9X
   delay(250);
-  senseBoxIO.powerXB1(true);  // power on
+  senseBoxIO.powerXB1(true);  // power on (also waits 500ms)
   pinMode(PIN_XB1_INT, INPUT_PULLDOWN); // pull-down because interrupt is high-active
   
   // init SPI
@@ -36,14 +36,16 @@ void setup()
   senseBoxIO.powerXB1(false);
 
   // check version
-  if(i != 0x12)
+  if((i >= 0x11) && (i < 0xFF)) //0x11 or higher
+  {
+    Serial.println("OK - Detected");
+    senseBoxIO.statusGreen(); // status green
+  }
+  else
   {
     Serial.println("Error - Not Found");
     senseBoxIO.statusRed(); // status red
-    return; // don't continue
   }
-  Serial.println("OK - Detected");
-  senseBoxIO.statusGreen(); // status green
 }
 
 void loop()
